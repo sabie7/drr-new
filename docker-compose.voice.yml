@@ -1,0 +1,47 @@
+     1	version: "3.8"
+     2	
+     3	# ─────────────────────────────────────────────────────────────
+     4	#  TURN relay (coturn) for WebRTC voice — hi-master
+     5	# ─────────────────────────────────────────────────────────────
+     6	#  Public STUN only gets a voice call past about 80-90% of NATs.
+     7	#  Behind symmetric NAT (common on mobile networks) you need a
+     8	#  TURN relay. This service is a free, self-hosted coturn that the
+     9	#  chat server advertises to every client via `voice:config`.
+    10	#
+    11	#  Start it with:
+    12	#      docker compose -f docker-compose.voice.yml up -d
+    13	#
+    14	#  Then set these in the chat server's .env (see src/config.js):
+    15	#      TURN_URL=   turn:YOUR_HOST_OR_IP:3478
+    16	#      TURN_USER=  <same user as TURN_USERNAME below>
+    17	#      TURN_PASS=  <same password as TURN_PASSWORD below>
+    18	#
+    19	#  NOTE: `network_mode: host` is used because TURN needs to bind a
+    20	#  wide UDP port range (relay range below) and host networking makes
+    21	#  port publishing trivial. This is Linux-only; on Docker Desktop /
+    22	#  macOS you must publish the range explicitly instead.
+    23	# ─────────────────────────────────────────────────────────────
+    24	services:
+    25	  coturn:
+    26	    image: coturn/coturn:4.6
+    27	    container_name: hi-master-turn
+    28	    restart: unless-stopped
+    29	    network_mode: host
+    30	    environment:
+    31	      TURN_PORT: "3478"          # listening (UDP + TLS/DTLS)
+    32	      TURN_USERNAME: "chat"      # ← must match TURN_USER in the app .env
+    33	      TURN_PASSWORD: "change-me-strong-turn-password"  # ← TURN_PASS
+    34	      TURN_REALM: "turn.example.com"   # change to your public domain/IP
+    35	      TURN_USE_AUTH_SECRET: "false"
+    36	      TURN_NO_AUTH: "false"      # auth required — never run with NO_AUTH in prod
+    37	      TURN_MIN_PORT: "49152"     # relay UDP range (open on firewall!)
+    38	      TURN_MAX_PORT: "65535"
+    39	      TURN_VERBOSE: "true"
+    40	    # Alternative (bridge networking, Linux Docker): uncomment and drop host mode
+    41	    # ports:
+    42	    #   - "3478:3478/udp"
+    43	    #   - "3478:3478/tcp"
+    44	    #   - "3478:3478/tls"
+    45	    #   - "5349:5349/tcp"
+    46	    #   - "49152-65535:49152-65535/udp"
+    47	

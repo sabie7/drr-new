@@ -1,0 +1,200 @@
+     1	/* 
+     2	 * Filter Monitor Style Sheet
+     3	 * Classic Egyptian Chat design aligned with main-ui-color dynamically
+     4	 */
+     5	
+     6	/* Floating Monitor Button at bottom-right */
+     7	.filter-monitor-floating-btn {
+     8	  position: fixed;
+     9	  right: 20px;
+    10	  bottom: 80px;
+    11	  z-index: 1045;
+    12	  border-radius: 4px; /* Matches classic chat button border-radius */
+    13	  padding: 8px 16px;
+    14	  font-family: Arial, sans-serif;
+    15	  font-weight: bold;
+    16	  display: flex;
+    17	  align-items: center;
+    18	  justify-content: center;
+    19	  font-size: 13.5px;
+    20	  transition: all 0.2s ease-in-out;
+    21	  background-color: #dc3545 !important;
+    22	  color: #fff !important;
+    23	  border: 1px solid #901521 !important;
+    24	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    25	}
+    26	
+    27	.filter-monitor-floating-btn .badge {
+    28	  font-size: 11px;
+    29	  padding: 3px 6px;
+    30	  font-weight: bold;
+    31	  background-color: #ffc107 !important;
+    32	  color: #212529 !important;
+    33	  margin-right: 6px;
+    34	  border-radius: 2px;
+    35	}
+    36	
+    37	.filter-monitor-floating-btn:hover {
+    38	  background-color: #c82333 !important;
+    39	  transform: translateY(-1px);
+    40	}
+    41	
+    42	@media (max-width: 768px) {
+    43	  .filter-monitor-floating-btn {
+    44	    bottom: 85px;
+    45	    right: 15px;
+    46	    padding: 8px 12px;
+    47	  }
+    48	}
+    49	
+    50	/* Side Panel - Sliding from the RIGHT to match Arabic RTL */
+    51	.filter-monitor-side-panel {
+    52	  --sidebar-width: min(340px, 80vw);
+    53	  position: fixed;
+    54	  right: calc(var(--sidebar-width) * -1); /* Hidden offscreen on the right */
+    55	  left: auto;
+    56	  top: 0;
+    57	  bottom: var(--bottom-tabs-height, 0);
+    58	  width: var(--sidebar-width);
+    59	  background-color: #f4f5f7; /* Classic soft background */
+    60	  color: #333333;
+    61	  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+    62	  z-index: 1150;
+    63	  display: flex;
+    64	  flex-direction: column;
+    65	  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    66	  border-left: 1px solid rgba(0,0,0,0.15);
+    67	  font-family: Arial, sans-serif;
+    68	  box-sizing: border-box;
+    69	}
+    70	
+    71	@media (max-width: 768px) {
+    72	  .filter-monitor-side-panel {
+    73	    --sidebar-width: 77vw;
+    74	  }
+    75	}
+    76	
+    77	.filter-monitor-side-panel.open {
+    78	  right: 0 !important;
+    79	}
+    80	
+    81	/* Backdrop overlay */
+    82	.filter-monitor-backdrop {
+    83	  position: fixed;
+    84	  top: 0;
+    85	  left: 0;
+    86	  right: 0;
+    87	  bottom: 0;
+    88	  background-color: rgba(0,0,0,0.4);
+    89	  z-index: 1085;
+    90	  backdrop-filter: blur(1px);
+    91	  transition: opacity 0.2s ease;
+    92	}
+    93	
+    94	/* Panel Header - Elegant Classic Flat Header matching Chat main-ui-color */
+    95	.filter-monitor-side-panel .panel-header {
+    96	  background-color: var(--sidebar-header-bg, var(--main-ui-color, #444444)) !important;
+    97	  padding: 12px 14px;
+    98	  border-bottom: 3px solid #dc3545; /* Red alert indicator line */
+    99	  color: #ffffff;
+   100	  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   101	  display: flex;
+   102	  justify-content: space-between;
+   103	  align-items: center;
+   104	}
+   105	
+   106	.filter-monitor-side-panel .panel-messages {
+   107	  flex-grow: 1;
+   108	  overflow-y: auto;
+   109	  background-color: #eef2f5; /* Clean light gray canvas matching chat feel */
+   110	  padding: 12px;
+   111	}
+   112	
+   113	/* Monitored Message Card - Classic Form with borders & clear text layout */
+   114	.monitor-item-card {
+   115	  background-color: #ffffff;
+   116	  border: 1px solid #ced4da;
+   117	  border-right: 5px solid #dc3545; /* Crimson indicator on the right side for RTL */
+   118	  border-radius: 3px;
+   119	  padding: 10px 12px;
+   120	  margin-bottom: 12px;
+   121	  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+   122	  position: relative;
+   123	}
+   124	
+   125	.monitor-item-card:hover {
+   126	  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+   127	}
+   128	
+   129	.monitor-item-card:last-child {
+   130	  margin-bottom: 0;
+   131	}
+   132	
+   133	/* Metadata & Badges */
+   134	.monitor-item-meta {
+   135	  display: flex;
+   136	  justify-content: space-between;
+   137	  align-items: center;
+   138	  margin-bottom: 6px;
+   139	  padding-bottom: 5px;
+   140	  border-bottom: 1px solid #edf1f3;
+   141	}
+   142	
+   143	.monitor-item-badge {
+   144	  font-size: 11px;
+   145	  font-weight: bold;
+   146	  padding: 2px 6px;
+   147	  border-radius: 2px;
+   148	  display: inline-block;
+   149	}
+   150	
+   151	.monitor-badge-public {
+   152	  background-color: #20c997;
+   153	  color: #fff;
+   154	}
+   155	
+   156	.monitor-badge-private {
+   157	  background-color: #fd7e14;
+   158	  color: #fff;
+   159	}
+   160	
+   161	.monitor-badge-notification {
+   162	  background-color: #6f42c1;
+   163	  color: #fff;
+   164	}
+   165	
+   166	.monitor-badge-edit {
+   167	  background-color: #17a2b8;
+   168	  color: #fff;
+   169	}
+   170	
+   171	/* Matched Term Pill Tags */
+   172	.monitor-word-pill {
+   173	  background-color: #f8d7da;
+   174	  color: #721c24;
+   175	  border: 1px solid #f5c6cb;
+   176	  font-weight: bold;
+   177	  font-size: 11px;
+   178	  padding: 1px 6px;
+   179	  border-radius: 2px;
+   180	  display: inline-block;
+   181	  margin-right: 3px;
+   182	}
+   183	
+   184	/* Message Text Box (Full width original text display) */
+   185	.monitor-item-text {
+   186	  background-color: #ffffff;
+   187	  border: 1px dashed #ced4da;
+   188	  border-radius: 2px;
+   189	  padding: 8px 10px;
+   190	  font-size: 14px;
+   191	  color: #212529;
+   192	  word-break: break-all;
+   193	  line-height: 1.5;
+   194	  font-weight: bold;
+   195	  text-align: right;
+   196	  margin-top: 6px;
+   197	  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+   198	}
+   199	
+   200	

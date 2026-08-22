@@ -1,0 +1,27 @@
+     1	{
+     2	  "name": "شات درر",
+     3	  "short_name": "شات درر",
+     4	  "description": "شات درر: وجهتك الأولى للدردشة الخليجية والعربية. تواصل مع أصدقاء جدد من عمان والسعودية وكافة الدول في بيئة آمنة وسريعة.",
+     5	  "lang": "ar",
+     6	  "dir": "rtl",
+     7	  "start_url": "/",
+     8	  "scope": "/",
+     9	  "display": "standalone",
+    10	  "background_color": "#3b3a3a",
+    11	  "theme_color": "#794e4e",
+    12	  "icons": [
+    13	    {
+    14	      "src": "/uploads/site/favicon-1783610496473-23178218.jpeg",
+    15	      "sizes": "192x192",
+    16	      "type": "image/jpeg",
+    17	      "purpose": "any"
+    18	    },
+    19	    {
+    20	      "src": "/uploads/site/banner-1783610496467-956197802.jpeg",
+    21	      "sizes": "512x512",
+    22	      "type": "image/jpeg",
+    23	      "purpose": "any"
+    24	    }
+    25	  ]
+    26	}
+    27	

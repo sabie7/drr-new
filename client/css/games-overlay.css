@@ -1,0 +1,346 @@
+     1	/* Game Overlay & UI Styling */
+     2	
+     3	.game-overlay {
+     4	  position: fixed;
+     5	  top: 50%;
+     6	  left: 50%;
+     7	  transform: translate(-50%, -50%);
+     8	  width: 90%;
+     9	  max-width: 600px;
+    10	  height: 85%;
+    11	  max-height: 800px;
+    12	  background-color: #ffffff;
+    13	  border-radius: 12px;
+    14	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    15	  z-index: 1050;
+    16	  display: flex;
+    17	  flex-direction: column;
+    18	  overflow: hidden;
+    19	  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+    20	  direction: rtl;
+    21	}
+    22	
+    23	.game-overlay.d-none {
+    24	  display: none !important;
+    25	}
+    26	
+    27	/* Header Styling */
+    28	.game-overlay-header {
+    29	  background-color: #1f2937;
+    30	  color: #ffffff;
+    31	  padding: 12px 16px;
+    32	  display: flex;
+    33	  justify-content: space-between;
+    34	  align-items: center;
+    35	  border-bottom: 2px solid #374151;
+    36	  user-select: none;
+    37	}
+    38	
+    39	#game-overlay-title {
+    40	  font-family: 'Tajawal', sans-serif;
+    41	  font-weight: 700;
+    42	  font-size: 1.1rem;
+    43	  display: flex;
+    44	  align-items: center;
+    45	  gap: 8px;
+    46	}
+    47	
+    48	.game-overlay-actions {
+    49	  display: flex;
+    50	  align-items: center;
+    51	  gap: 12px;
+    52	}
+    53	
+    54	#game-viewers-count {
+    55	  font-size: 0.85rem;
+    56	  background-color: rgba(255, 255, 255, 0.15);
+    57	  padding: 4px 8px;
+    58	  border-radius: 20px;
+    59	  display: flex;
+    60	  align-items: center;
+    61	  gap: 6px;
+    62	}
+    63	
+    64	.game-overlay-actions button {
+    65	  background: none;
+    66	  border: none;
+    67	  color: #9ca3af;
+    68	  font-size: 1.1rem;
+    69	  cursor: pointer;
+    70	  padding: 4px;
+    71	  border-radius: 4px;
+    72	  display: flex;
+    73	  align-items: center;
+    74	  justify-content: center;
+    75	  transition: color 0.2s, background-color 0.2s;
+    76	}
+    77	
+    78	.game-overlay-actions button:hover {
+    79	  color: #ffffff;
+    80	  background-color: rgba(255, 255, 255, 0.1);
+    81	}
+    82	
+    83	/* Game Stage Styling */
+    84	.game-stage {
+    85	  flex-grow: 1;
+    86	  position: relative;
+    87	  overflow-y: auto;
+    88	  overflow-x: hidden;
+    89	  background-color: #f3f4f6;
+    90	  display: flex;
+    91	  flex-direction: column;
+    92	}
+    93	
+    94	/* Voice Controls */
+    95	.game-voice-controls {
+    96	  display: none !important;
+    97	  background-color: #111827;
+    98	  color: #ffffff;
+    99	  padding: 8px 16px;
+   100	  display: flex;
+   101	  align-items: center;
+   102	  gap: 12px;
+   103	  border-top: 1px solid #1f2937;
+   104	}
+   105	
+   106	.game-voice-controls button {
+   107	  width: 36px;
+   108	  height: 36px;
+   109	  border-radius: 50%;
+   110	  border: none;
+   111	  background-color: #374151;
+   112	  color: #ffffff;
+   113	  display: flex;
+   114	  align-items: center;
+   115	  justify-content: center;
+   116	  cursor: pointer;
+   117	  transition: background-color 0.2s, transform 0.1s;
+   118	}
+   119	
+   120	.game-voice-controls button:hover {
+   121	  background-color: #4b5563;
+   122	}
+   123	
+   124	.game-voice-controls button.muted {
+   125	  background-color: #ef4444;
+   126	}
+   127	
+   128	.game-voice-controls button.muted:hover {
+   129	  background-color: #dc2626;
+   130	}
+   131	
+   132	#game-voice-status {
+   133	  font-size: 0.85rem;
+   134	  color: #9ca3af;
+   135	}
+   136	
+   137	/* Minimized Indicator */
+   138	.game-minimized-indicator {
+   139	  position: fixed;
+   140	  bottom: 20px;
+   141	  right: 20px;
+   142	  background-color: #8b5cf6;
+   143	  color: #ffffff;
+   144	  padding: 12px 18px;
+   145	  border-radius: 50px;
+   146	  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+   147	  z-index: 1040;
+   148	  display: flex;
+   149	  align-items: center;
+   150	  gap: 10px;
+   151	  cursor: pointer;
+   152	  user-select: none;
+   153	  font-family: 'Tajawal', sans-serif;
+   154	  font-weight: 700;
+   155	  transition: transform 0.2s, background-color 0.2s;
+   156	  animation: pulse-ring 2s infinite;
+   157	}
+   158	
+   159	.game-minimized-indicator:hover {
+   160	  background-color: #7c3aed;
+   161	  transform: scale(1.05);
+   162	}
+   163	
+   164	.game-minimized-indicator.d-none {
+   165	  display: none !important;
+   166	}
+   167	
+   168	/* Square Board Aspect Ratio Constraints */
+   169	.ludo-game-container,
+   170	.carrom-container {
+   171	  height: 100% !important;
+   172	  display: flex;
+   173	  flex-direction: column;
+   174	}
+   175	
+   176	/* Square aspects for Board Containers */
+   177	.ludo-board-wrapper,
+   178	.carrom-board-wrapper {
+   179	  aspect-ratio: 1/1 !important;
+   180	  width: 95% !important;
+   181	  max-width: 500px !important;
+   182	  margin: auto !important;
+   183	}
+   184	
+   185	/* Responsiveness & Mobile Adaptations */
+   186	@media (max-width: 768px) {
+   187	  .game-overlay {
+   188	    width: 100%;
+   189	    height: 100%;
+   190	    max-width: 100%;
+   191	    max-height: 100%;
+   192	    border-radius: 0;
+   193	    top: 0;
+   194	    left: 0;
+   195	    transform: none;
+   196	    padding-top: env(safe-area-inset-top);
+   197	    padding-bottom: env(safe-area-inset-bottom);
+   198	  }
+   199	
+   200	  .ludo-board-wrapper,
+   201	  .carrom-board-wrapper {
+   202	    max-width: 92vw !important;
+   203	  }
+   204	}
+   205	
+   206	/* ... existing styles ... */
+   207	@keyframes pulse-ring {
+   208	  0% {
+   209	    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+   210	  }
+   211	  70% {
+   212	    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+   213	  }
+   214	  100% {
+   215	    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+   216	  }
+   217	}
+   218	
+   219	.ludo-arena {
+   220	    display: flex;
+   221	    flex-direction: column;
+   222	    gap: 10px;
+   223	    padding: 10px;
+   224	    max-width: 600px;
+   225	    margin: 0 auto;
+   226	    width: 100%;
+   227	}
+   228	
+   229	.ludo-players-top, .ludo-players-bottom {
+   230	    display: flex;
+   231	    justify-content: space-between;
+   232	    gap: 10px;
+   233	}
+   234	
+   235	.ludo-player-card {
+   236	    background: #fff;
+   237	    border: 2px solid #ddd;
+   238	    border-radius: 12px;
+   239	    padding: 8px;
+   240	    display: flex;
+   241	    align-items: center;
+   242	    gap: 8px;
+   243	    width: clamp(150px, 40vw, 200px);
+   244	    transition: all 0.2s;
+   245	    font-size: 0.85rem;
+   246	    position: relative;
+   247	    overflow: hidden;
+   248	}
+   249	
+   250	.ludo-player-card.is-active {
+   251	    border-color: #3b82f6;
+   252	    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+   253	}
+   254	
+   255	.ludo-player-card.color-red { border-left: 5px solid #ef4444; }
+   256	.ludo-player-card.color-blue { border-left: 5px solid #3b82f6; }
+   257	.ludo-player-card.color-green { border-left: 5px solid #22c55e; }
+   258	.ludo-player-card.color-yellow { border-left: 5px solid #eab308; }
+   259	
+   260	.ludo-player-avatar-wrapper {
+   261	    position: relative;
+   262	    width: 48px;
+   263	    height: 48px;
+   264	    flex-shrink: 0;
+   265	}
+   266	
+   267	.ludo-player-avatar {
+   268	    width: 100%;
+   269	    height: 100%;
+   270	    border-radius: 50%;
+   271	    object-fit: cover;
+   272	    border: 2px solid #fff;
+   273	}
+   274	
+   275	.ludo-turn-progress {
+   276	    position: absolute;
+   277	    top: -2px;
+   278	    left: -2px;
+   279	    width: 52px;
+   280	    height: 52px;
+   281	    transform: rotate(-90deg);
+   282	}
+   283	
+   284	.ludo-turn-progress circle {
+   285	    fill: none;
+   286	    stroke-width: 4px;
+   287	    stroke-dasharray: 126; /* 2 * PI * r (approx 20) */
+   288	    stroke-dashoffset: 126;
+   289	    transition: stroke-dashoffset 0.25s linear;
+   290	}
+   291	
+   292	.ludo-player-mic-state {
+   293	    position: absolute;
+   294	    bottom: 0;
+   295	    right: 0;
+   296	    background: #fff;
+   297	    border-radius: 50%;
+   298	    padding: 3px;
+   299	    font-size: 10px;
+   300	    border: 1px solid #ddd;
+   301	}
+   302	
+   303	.ludo-player-details {
+   304	    flex-grow: 1;
+   305	    min-width: 0;
+   306	    display: flex;
+   307	    flex-direction: column;
+   308	}
+   309	
+   310	.ludo-player-name {
+   311	    font-weight: bold;
+   312	    white-space: nowrap;
+   313	    overflow: hidden;
+   314	    text-overflow: ellipsis;
+   315	}
+   316	
+   317	.ludo-voice-meter {
+   318	    display: none;
+   319	    gap: 2px;
+   320	    align-items: center;
+   321	}
+   322	
+   323	.ludo-player-card.is-speaking .ludo-voice-meter {
+   324	    display: flex;
+   325	}
+   326	
+   327	.ludo-voice-meter span {
+   328	    width: 3px;
+   329	    height: 10px;
+   330	    background: #22c55e;
+   331	    animation: meter-bounce 0.5s infinite alternate;
+   332	}
+   333	
+   334	@keyframes meter-bounce {
+   335	    from { height: 5px; }
+   336	    to { height: 15px; }
+   337	}
+   338	
+   339	.ludo-player-speaker-toggle {
+   340	    background: none;
+   341	    border: none;
+   342	    padding: 4px;
+   343	    cursor: pointer;
+   344	    color: #6b7280;
+   345	}
+   346	
