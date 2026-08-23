@@ -9894,3 +9894,44 @@
   9894	  outline: 2px solid var(--drr-accent, #794e4e);
   9895	  outline-offset: 2px;
   9896	}
+/* ═══════════════════════════════════════════════════════════════
+   ⚡ 2026 PERFORMANCE & MOBILE OPTIMIZATIONS (no visual changes)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* CSS Containment — browser skips re-layout of off-screen messages */
+.message-item,
+.wall-post-card,
+.user-pro-item {
+  contain: layout style;
+}
+
+/* Safe-area insets for notch phones */
+.chat-main-wrapper {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.classic-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Reduced motion — respect user OS settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Lazy loading images below fold */
+.post-media img,
+.message-image img {
+  loading: lazy;
+  content-visibility: auto;
+}
+
+/* Touch targets minimum size (WCAG) */
+.bottom-tabs-bar button,
+.sidebar-tab-btn {
+  min-height: 44px;
+  min-width: 44px;
+}
