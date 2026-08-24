@@ -3,6 +3,8 @@
    lines 3457–6488 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — sockets-battle-music-pmcall-live */
 }
 
 function emitUserSnapshotTo(socket) {

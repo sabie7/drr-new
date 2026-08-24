@@ -3,6 +3,8 @@
    lines 2782–3163 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — stories-admin-visits-youtube */
   const token = bearerToken(req);
   if (!token) return null;
   const guest = guestRegistryForToken(token);

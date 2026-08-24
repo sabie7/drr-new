@@ -3,6 +3,8 @@
    lines 339–551 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — stores-bans-global-limits */
 const stories = [];                // {id,userId,user,text,img,createdAt}
 const memberSessions = new Map();  // uid -> { token, clientSessionId, socketId, online:bool }
 const activeSessions = new Map();  // clientSessionId -> { uid, token, ts }

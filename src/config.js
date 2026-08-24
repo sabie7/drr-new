@@ -1,3 +1,4 @@
+/* Kaz alwadi (c) 2026 — Configuration */
 var path = require('path');
 var crypto = require('crypto');
 var fs = require('fs');

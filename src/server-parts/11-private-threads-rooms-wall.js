@@ -3,6 +3,8 @@
    lines 1944–2462 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — private-threads-rooms-wall */
   return [String(a).toLowerCase(), String(b).toLowerCase()].sort().join('::');
 }
 function getPrivateThread(a, b) {

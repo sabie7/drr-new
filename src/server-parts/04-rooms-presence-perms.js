@@ -3,6 +3,8 @@
    lines 552–683 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — rooms-presence-perms */
   const room = findRoomByAnyId(roomId);
   if (room && (String(room.ownerId) === String(u.uid || u.guestId || u.userId) || (room.owner && String(room.owner) === String(u.username)))) return true;
   return isRoomModerator(roomId, u);

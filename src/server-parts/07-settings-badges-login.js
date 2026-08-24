@@ -3,6 +3,8 @@
    lines 1083–1135 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — settings-badges-login */
 function badgeConfigGet() {
   const doc = moduleSettings();
   const b = (doc && doc.badgesCfg && typeof doc.badgesCfg === 'object') ? doc.badgesCfg : {};

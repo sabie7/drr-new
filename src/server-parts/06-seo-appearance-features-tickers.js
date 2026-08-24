@@ -3,6 +3,8 @@
    lines 879–1082 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — seo-appearance-features-tickers */
   try {
     if (!fs.existsSync(INDEX_HTML)) return {};
     const html = fs.readFileSync(INDEX_HTML, 'utf8');

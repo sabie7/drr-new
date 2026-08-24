@@ -3,6 +3,8 @@
    lines 1441–1741 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — auth-settings-rest */
   const rl = rateLimit(clientIp(req), { max: 5, windowMs: 60000 }, 'register');
   if (rl.blocked) return res.status(429).json({ success: false, message: 'محاولات كثيرة، حاول بعد قليل' });
   try {

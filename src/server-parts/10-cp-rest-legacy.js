@@ -3,6 +3,8 @@
    lines 1742–1943 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — cp-rest-legacy */
 function getSiteRoles() {
   const doc = db.settings.find({})[0] || {};
   const r = doc.siteRoles || {};

@@ -3,6 +3,8 @@
    lines 2463–2781 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — users-media-uploads */
   const au = authUserForReq(req);
   if (!au) return res.status(401).json({ success: false, message: 'Session expired, please login again' });
   const rl = rateLimit(clientIp(req), { max: 20, windowMs: 60000 }, 'user-settings');

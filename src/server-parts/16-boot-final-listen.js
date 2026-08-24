@@ -3,6 +3,8 @@
    lines 6489–6549 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — boot-final-listen */
     (db.rooms.getAll() || []).forEach((r) => {
       const rid = String(r.id);
       if (Array.isArray(r.moderators) && r.moderators.length > 0 && !roomModerators.has(rid)) {

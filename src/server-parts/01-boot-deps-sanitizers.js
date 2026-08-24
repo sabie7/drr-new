@@ -3,6 +3,8 @@
    lines 1–191 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — boot-deps-sanitizers */
 const express = require('express');
 const http = require('http');
 const path = require('path');

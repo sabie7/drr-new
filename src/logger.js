@@ -1,3 +1,4 @@
+/* Kaz alwadi (c) 2026 — Logger */
 const os = require('os');
 
 // ── Structured logger (Phase 8) ─────────────────────────────────────────────

@@ -3,6 +3,8 @@
    lines 684–878 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — gates-public-user */
   wall: 'الانتقال إلى الجدار ونشر المنشورات',
   private: 'إرسال الرسائل الخاصة',
   story: 'نشر القصص',

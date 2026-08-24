@@ -3,6 +3,8 @@
    lines 1136–1440 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — jsonld-seo-html-auth-helpers */
   const canon = String(seo.canonicalUrl || '').replace(/\/+$/, '');
   const absolutize = (u) => (!u ? '' : /^https?:\/\//i.test(u) ? u : canon + (u.charAt(0) === '/' ? '' : '/') + u);
   const name = seo.siteName || seo.siteTitle || 'شات درر';

@@ -3,6 +3,8 @@
    lines 3164–3456 of original modern-server.js
    ⚠ ORDER MATTERS — assembled by build-server.cjs
    ═══════════════════════════════════════════════ */
+0
+/* Kaz alwadi (c) 2026 — admin-users-addons-rest */
   if (!u) return { error: res.status(401).json({ success: false, message: 'يجب تسجيل الدخول' }) };
   if (!permissionsFor(u).isAdmin) return { error: res.status(403).json({ success: false, message: 'غير مسموح' }) };
   return { u };
