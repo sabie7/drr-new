@@ -95,7 +95,9 @@ function permissionsFor(u) {
   // the `createroom` flag (e.g. admin/vip). Plain members and guests cannot.
   if (u.type !== 'guest') {
     p.canCreateRooms = userCanCreateRooms(u);
-    p.canSendGifts = true;
+    // Gifts restricted: only admin or power with gifts flag
+    const pw = powerEntryFor(u);
+    p.canSendGifts = isAdmin || (pw && (pw.gifts === 1 || pw.gifts === true));
     p.canOpenPrivateMessages = true;
     p.canSendPrivateMessages = true;
     p.canReplyToPublicMessages = true;

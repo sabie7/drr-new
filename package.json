@@ -11,7 +11,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "start": "node dist-server/server.js",
+    "start": "node dist-server/server.smt7hcogc.js",
     "build": "npm run build:server && npm run build:chat",
     "build:server": "node build-server.cjs",
     "build:chat": "node build-chat.cjs",
