@@ -1,4 +1,3 @@
-/* Kaz alwadi (c) 2026 — Database Layer */
 const path = require('path');
 const logger = require('../logger');
 const config = require('../config');
