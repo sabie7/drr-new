@@ -1,826 +1,825 @@
-     1	/* Tiktok Live Style Battles */
-     2	
-     3	.battle-panel-container {
-     4	  background: rgba(15, 23, 42, 0.95);
-     5	  backdrop-filter: blur(12px);
-     6	  -webkit-backdrop-filter: blur(12px);
-     7	  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-     8	  padding: 12px 16px;
-     9	  color: #f1f5f9;
-    10	  font-family: inherit;
-    11	  z-index: 100;
-    12	  position: relative;
-    13	  transition: all 0.3s ease;
-    14	  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-    15	  border-radius: 8px;
-    16	  margin: 8px;
-    17	}
-    18	
-    19	.battle-header {
-    20	  font-weight: 600;
-    21	  font-size: 13px;
-    22	  color: #94a3b8;
-    23	  margin-bottom: 10px;
-    24	  letter-spacing: 0.5px;
-    25	}
-    26	
-    27	.battle-round-info {
-    28	  background: rgba(255, 255, 255, 0.08);
-    29	  padding: 4px 10px;
-    30	  border-radius: 20px;
-    31	}
-    32	
-    33	.battle-timer-badge {
-    34	  background: #ef4444;
-    35	  color: #ffffff;
-    36	  padding: 4px 12px;
-    37	  border-radius: 20px;
-    38	  animation: pulse-timer 1s infinite alternate;
-    39	}
-    40	
-    41	@keyframes pulse-timer {
-    42	  0% { transform: scale(1); box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
-    43	  100% { transform: scale(1.05); box-shadow: 0 0 15px rgba(239, 68, 68, 0.8); }
-    44	}
-    45	
-    46	.battle-vs-wrapper {
-    47	  display: flex;
-    48	  align-items: center;
-    49	  justify-content: space-evenly;
-    50	  margin: 10px 0;
-    51	  position: relative;
-    52	}
-    53	
-    54	.battle-player {
-    55	  display: flex;
-    56	  flex-direction: column;
-    57	  align-items: center;
-    58	  width: 40%;
-    59	  position: relative;
-    60	  transition: all 0.3s ease;
-    61	}
-    62	
-    63	.battle-avatar-ring {
-    64	  width: 72px;
-    65	  height: 72px;
-    66	  border-radius: 50%;
-    67	  padding: 4px;
-    68	  display: flex;
-    69	  align-items: center;
-    70	  justify-content: center;
-    71	  margin-bottom: 8px;
-    72	  box-sizing: border-box;
-    73	}
-    74	
-    75	.pr-ring {
-    76	  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-    77	  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-    78	}
-    79	
-    80	.sc-ring {
-    81	  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-    82	  box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-    83	}
-    84	
-    85	.battle-avatar {
-    86	  width: 100%;
-    87	  height: 100%;
-    88	  border-radius: 50%;
-    89	  object-fit: cover;
-    90	  background-color: #334155;
-    91	  border: 2px solid rgba(15, 23, 42, 0.9);
-    92	}
-    93	
-    94	.battle-player-name,
-    95	.battle-player-name .user-identity-name {
-    96	  font-size: 15px !important;
-    97	  font-weight: 500;
-    98	  color: #ffffff !important;
-    99	  margin-bottom: 4px;
-   100	  text-overflow: ellipsis;
-   101	  overflow: hidden;
-   102	  white-space: nowrap;
-   103	  max-width: 100%;
-   104	  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-   105	}
-   106	
-   107	.battle-score {
-   108	  font-size: 22px;
-   109	  font-weight: 800;
-   110	  margin: 2px 0 6px 0;
-   111	  font-family: monospace;
-   112	}
-   113	
-   114	.player-left .battle-score {
-   115	  color: #38bdf8;
-   116	  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-   117	}
-   118	
-   119	.player-right .battle-score {
-   120	  color: #f472b6;
-   121	  text-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
-   122	}
-   123	
-   124	.battle-vs-mark {
-   125	  font-size: 26px;
-   126	  font-weight: 900;
-   127	  color: #ffffff;
-   128	  font-style: italic;
-   129	  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 3px #000;
-   130	  z-index: 5;
-   131	  user-select: none;
-   132	}
-   133	
-   134	.btn-support {
-   135	  border: none;
-   136	  border-radius: 20px;
-   137	  padding: 6px 14px;
-   138	  font-size: 11px;
-   139	  font-weight: bold;
-   140	  color: #ffffff;
-   141	  display: flex;
-   142	  align-items: center;
-   143	  gap: 4px;
-   144	  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-   145	  cursor: pointer;
-   146	  transition: all 0.2s ease;
-   147	  user-select: none;
-   148	}
-   149	
-   150	.btn-support-left {
-   151	  background: linear-gradient(90deg, #2563eb, #1d4ed8);
-   152	}
-   153	.btn-support-left:hover {
-   154	  background: linear-gradient(90deg, #1d4ed8, #1e40af);
-   155	  transform: translateY(-1px);
-   156	}
-   157	.btn-support-left:active {
-   158	  transform: scale(0.95);
-   159	}
-   160	
-   161	.btn-support-right {
-   162	  background: linear-gradient(90deg, #db2777, #be185d);
-   163	}
-   164	.btn-support-right:hover {
-   165	  background: linear-gradient(90deg, #be185d, #9d174d);
-   166	  transform: translateY(-1px);
-   167	}
-   168	.btn-support-right:active {
-   169	  transform: scale(0.95);
-   170	}
-   171	
-   172	/* Progress Slider */
-   173	.battle-progress-wrapper {
-   174	  margin: 14px 0;
-   175	  width: 100%;
-   176	}
-   177	
-   178	.battle-progress {
-   179	  height: 12px;
-   180	  background: linear-gradient(90deg, #ec4899, #8b5cf6); /* Player 2 color */
-   181	  border-radius: 6px;
-   182	  overflow: hidden;
-   183	  position: relative;
-   184	  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-   185	}
-   186	
-   187	.battle-progress-p1 {
-   188	  height: 100%;
-   189	  background: linear-gradient(90deg, #06b6d4, #3b82f6); /* Player 1 color */
-   190	  width: 50%;
-   191	  border-right: 2px solid #ffffff;
-   192	  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-   193	  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
-   194	}
-   195	
-   196	/* Won Rounds Indicators (Tick / Dots) */
-   197	.battle-won-rounds {
-   198	  display: flex;
-   199	  gap: 6px;
-   200	  margin-bottom: 8px;
-   201	}
-   202	
-   203	.round-won-dot {
-   204	  width: 10px;
-   205	  height: 10px;
-   206	  border-radius: 50%;
-   207	  border: 1px solid rgba(255, 255, 255, 0.4);
-   208	  background-color: transparent;
-   209	}
-   210	
-   211	.player-left .round-won-dot.won {
-   212	  background-color: #38bdf8;
-   213	  box-shadow: 0 0 8px #38bdf8;
-   214	  border-color: #38bdf8;
-   215	}
-   216	
-   217	.player-right .round-won-dot.won {
-   218	  background-color: #f472b6;
-   219	  box-shadow: 0 0 8px #f472b6;
-   220	  border-color: #f472b6;
-   221	}
-   222	
-   223	/* Support Actions Footer */
-   224	.battle-support-actions {
-   225	  border-top: 1px solid rgba(255, 255, 255, 0.1);
-   226	  margin-top: 10px;
-   227	}
-   228	
-   229	.bt-gift-btn {
-   230	  background: linear-gradient(135deg, #eab308, #ca8a04);
-   231	  color: #1e1b4b;
-   232	  border: none;
-   233	  font-weight: 700;
-   234	  font-size: 11px;
-   235	  border-radius: 4px;
-   236	  padding: 6px 12px;
-   237	  cursor: pointer;
-   238	  transition: all 0.2s ease;
-   239	  box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
-   240	}
-   241	
-   242	.bt-gift-btn:hover {
-   243	  background: linear-gradient(135deg, #facc15, #eab308);
-   244	  transform: translateY(-1px);
-   245	}
-   246	
-   247	.bt-cancel-btn {
-   248	  background: rgba(239, 68, 68, 0.2);
-   249	  color: #fca5a5;
-   250	  border: 1px solid rgba(239, 68, 68, 0.4);
-   251	  font-size: 10px;
-   252	  border-radius: 4px;
-   253	  padding: 4px 8px;
-   254	  cursor: pointer;
-   255	  transition: all 0.2s ease;
-   256	}
-   257	
-   258	.bt-cancel-btn:hover {
-   259	  background: rgba(239, 68, 68, 0.35);
-   260	}
-   261	
-   262	.battle-status-msg {
-   263	  /* font-size: 11px; */
-   264	  color: #94a3b8;
-   265	  /* font-weight: 500; */
-   266	}
-   267	
-   268	/* Flying Gift Animation Overlay styles */
-   269	.battle-flying-gift {
-   270	  position: absolute;
-   271	  z-index: 9999;
-   272	  pointer-events: none;
-   273	  display: flex;
-   274	  flex-direction: column;
-   275	  align-items: center;
-   276	  font-family: inherit;
-   277	  font-weight: bold;
-   278	  animation: gift-fly-up 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-   279	}
-   280	
-   281	.gift-fly-icon {
-   282	  font-size: 38px;
-   283	  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-   284	  animation: scale-bounce 0.4s ease alternate infinite;
-   285	}
-   286	
-   287	.gift-fly-label {
-   288	  background: rgba(15, 23, 42, 0.85);
-   289	  color: #ffffff;
-   290	  padding: 2px 8px;
-   291	  border-radius: 4px;
-   292	  font-size: 10px;
-   293	  margin-top: 4px;
-   294	  border: 1px solid rgba(255, 255, 255, 0.15);
-   295	  white-space: nowrap;
-   296	}
-   297	
-   298	@keyframes gift-fly-up {
-   299	  0% { transform: translate(0, 150px) scale(0.4); opacity: 0; }
-   300	  15% { transform: translate(0, 30px) scale(1.2); opacity: 1; }
-   301	  25% { transform: translate(0, 0) scale(1); opacity: 1; }
-   302	  75% { transform: translate(0, -50px) scale(1); opacity: 1; }
-   303	  100% { transform: translate(0, -120px) scale(0.6); opacity: 0; }
-   304	}
-   305	
-   306	@keyframes scale-bounce {
-   307	  0% { transform: scale(1); }
-   308	  100% { transform: scale(1.15); }
-   309	}
-   310	
-   311	/* Tap Effect anim */
-   312	.battle-tap-ripple {
-   313	  position: absolute;
-   314	  width: 40px;
-   315	  height: 40px;
-   316	  background: rgba(255, 255, 255, 0.3);
-   317	  border-radius: 50%;
-   318	  pointer-events: none;
-   319	  animation: tap-fade-out 0.6s ease-out forwards;
-   320	  z-index: 1000;
-   321	}
-   322	
-   323	@keyframes tap-fade-out {
-   324	  0% { transform: scale(0.2); opacity: 1; }
-   325	  100% { transform: scale(1.8); opacity: 0; }
-   326	}
-   327	
-   328	/* Battle gift picker modal customized CSS */
-   329	#battle-gift-picker-modal .modal-content {
-   330	  background: #0f172a;
-   331	  border: 1px solid rgba(255, 255, 255, 0.1);
-   332	  color: #f8fafc;
-   333	}
-   334	
-   335	#battle-gift-picker-modal .modal-header {
-   336	  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-   337	}
-   338	
-   339	#battle-gift-picker-modal .modal-footer {
-   340	  border-top: 1px solid rgba(255, 255, 255, 0.1);
-   341	}
-   342	
-   343	.battle-gift-selection-grid {
-   344	  display: grid;
-   345	  grid-template-columns: repeat(4, 1fr);
-   346	  gap: 12px;
-   347	}
-   348	
-   349	.battle-gift-card {
-   350	  background: rgba(255, 255, 255, 0.04);
-   351	  border: 1.5px solid rgba(255, 255, 255, 0.08);
-   352	  border-radius: 8px;
-   353	  padding: 10px;
-   354	  text-align: center;
-   355	  cursor: pointer;
-   356	  transition: all 0.15s ease;
-   357	}
-   358	
-   359	.battle-gift-card:hover {
-   360	  background: rgba(255, 255, 255, 0.08);
-   361	  border-color: #3b82f6;
-   362	  transform: translateY(-2px);
-   363	}
-   364	
-   365	.battle-gift-card.selected {
-   366	  background: rgba(59, 130, 246, 0.15);
-   367	  border-color: #3b82f6;
-   368	  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-   369	}
-   370	
-   371	.battle-gift-icon-view {
-   372	  font-size: 32px;
-   373	  margin-bottom: 6px;
-   374	  display: block;
-   375	}
-   376	
-   377	.battle-gift-name-view {
-   378	  font-size: 11px;
-   379	  font-weight: 700;
-   380	  color: #cbd5e1;
-   381	  display: block;
-   382	}
-   383	
-   384	.battle-gift-price-view {
-   385	  font-size: 9px;
-   386	  font-weight: 500;
-   387	  color: #eab308;
-   388	  display: block;
-   389	}
-   390	
-   391	/* Styled final result box CSS rules */
-   392	.bt-final-result-box {
-   393	  direction: rtl;
-   394	  text-align: center;
-   395	  padding: 8px 4px;
-   396	}
-   397	
-   398	.bt-final-winner {
-   399	  border-radius: 14px;
-   400	  padding: 12px;
-   401	  margin-bottom: 14px;
-   402	  color: #fff;
-   403	  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-   404	}
-   405	
-   406	.bt-final-winner.blue {
-   407	  background: linear-gradient(135deg, #0ea5e9, #2563eb);
-   408	}
-   409	
-   410	.bt-final-winner.pink {
-   411	  background: linear-gradient(135deg, #ec4899, #7c3aed);
-   412	}
-   413	
-   414	.bt-final-cup {
-   415	  font-size: 34px;
-   416	  line-height: 1;
-   417	  margin-bottom: 4px;
-   418	}
-   419	
-   420	.bt-final-winner-label {
-   421	  font-size: 13px;
-   422	  opacity: 0.9;
-   423	  margin-bottom: 4px;
-   424	}
-   425	
-   426	.bt-final-winner-name {
-   427	  font-size: 20px;
-   428	  font-weight: 800;
-   429	  line-height: 1.5;
-   430	}
-   431	
-   432	.bt-final-draw {
-   433	  background: linear-gradient(135deg, #64748b, #334155);
-   434	  color: #fff;
-   435	  border-radius: 14px;
-   436	  padding: 16px;
-   437	  font-size: 22px;
-   438	  font-weight: 800;
-   439	  margin-bottom: 14px;
-   440	}
-   441	
-   442	.bt-final-reason {
-   443	  background: #f1f5f9;
-   444	  color: #334155;
-   445	  border-radius: 10px;
-   446	  padding: 8px 10px;
-   447	  font-size: 13px;
-   448	  margin-bottom: 12px;
-   449	}
-   450	
-   451	.bt-final-score-title {
-   452	  font-size: 14px;
-   453	  font-weight: 700;
-   454	  color: #475569;
-   455	  margin: 8px 0 10px;
-   456	}
-   457	
-   458	.bt-final-score-row {
-   459	  display: grid;
-   460	  grid-template-columns: 1fr auto 1fr;
-   461	  align-items: stretch;
-   462	  gap: 8px;
-   463	}
-   464	
-   465	.bt-final-player-card {
-   466	  border-radius: 12px;
-   467	  padding: 10px 8px;
-   468	  background: #f8fafc;
-   469	  border: 1px solid #e2e8f0;
-   470	}
-   471	
-   472	.bt-final-player-card.blue {
-   473	  border-top: 4px solid #0ea5e9;
-   474	}
-   475	
-   476	.bt-final-player-card.pink {
-   477	  border-top: 4px solid #ec4899;
-   478	}
-   479	
-   480	.bt-final-player-name {
-   481	  font-size: 13px;
-   482	  font-weight: 700;
-   483	  color: #111827;
-   484	  min-height: 24px;
-   485	  line-height: 1.4;
-   486	  word-break: break-word;
-   487	}
-   488	
-   489	.bt-final-player-name * {
-   490	  display: inline-block;
-   491	  vertical-align: middle;
-   492	}
-   493	
-   494	.bt-final-player-score {
-   495	  font-size: 28px;
-   496	  font-weight: 900;
-   497	  color: #111827;
-   498	  margin-top: 6px;
-   499	}
-   500	
-   501	.bt-final-player-rounds {
-   502	  font-size: 12px;
-   503	  color: #64748b;
-   504	  margin-top: 4px;
-   505	}
-   506	
-   507	.bt-final-vs {
-   508	  align-self: center;
-   509	  font-weight: 900;
-   510	  color: #94a3b8;
-   511	  padding: 0 2px;
-   512	}
-   513	
-   514	@media (max-width: 480px) {
-   515	  .bt-final-score-row {
-   516	    grid-template-columns: 1fr;
-   517	  }
-   518	
-   519	  .bt-final-vs {
-   520	    padding: 4px 0;
-   521	  }
-   522	}
-   523	
-   524	/* TikTok-style Battle Challenge Enhancements */
-   525	.bt-gift-feed {
-   526	  position: absolute;
-   527	  left: 14px;
-   528	  bottom: 58px;
-   529	  width: 260px;
-   530	  max-width: 85%;
-   531	  z-index: 10;
-   532	  display: flex;
-   533	  flex-direction: column;
-   534	  gap: 6px;
-   535	  pointer-events: none;
-   536	}
-   537	
-   538	.bt-gift-feed-item {
-   539	  display: flex;
-   540	  align-items: center;
-   541	  gap: 8px;
-   542	  background: rgba(15, 23, 42, 0.82);
-   543	  border: 1px solid rgba(255,255,255,0.15);
-   544	  border-radius: 999px;
-   545	  padding: 5px 10px 5px 5px;
-   546	  color: #fff;
-   547	  box-shadow: 0 8px 22px rgba(0,0,0,0.22);
-   548	  animation: btGiftSlideIn .35s ease both;
-   549	  backdrop-filter: blur(8px);
-   550	}
-   551	
-   552	.bt-gift-feed-item.fade-out {
-   553	  animation: btGiftFadeOut .55s ease both;
-   554	}
-   555	
-   556	.bt-gift-feed-avatar {
-   557	  width: 34px;
-   558	  height: 34px;
-   559	  border-radius: 50%;
-   560	  object-fit: cover;
-   561	  flex-shrink: 0;
-   562	}
-   563	
-   564	.bt-gift-feed-body {
-   565	  min-width: 0;
-   566	  flex: 1;
-   567	  line-height: 1.2;
-   568	}
-   569	
-   570	.bt-gift-feed-name {
-   571	  font-size: 12px;
-   572	  font-weight: 800;
-   573	  white-space: nowrap;
-   574	  overflow: hidden;
-   575	  text-overflow: ellipsis;
-   576	}
-   577	
-   578	.bt-gift-feed-text {
-   579	  font-size: 11px;
-   580	  color: #cbd5e1;
-   581	}
-   582	
-   583	.bt-gift-feed-gift {
-   584	  color: #fde68a;
-   585	  font-weight: 800;
-   586	}
-   587	
-   588	.bt-gift-feed-qty {
-   589	  font-size: 18px;
-   590	  font-weight: 900;
-   591	  color: #facc15;
-   592	  text-shadow: 0 0 8px rgba(250,204,21,0.5);
-   593	}
-   594	
-   595	@keyframes btGiftSlideIn {
-   596	  from { transform: translateX(-40px) scale(.95); opacity: 0; }
-   597	  to { transform: translateX(0) scale(1); opacity: 1; }
-   598	}
-   599	
-   600	@keyframes btGiftFadeOut {
-   601	  to { transform: translateX(-30px) scale(.95); opacity: 0; }
-   602	}
-   603	
-   604	.bt-top-supporters {
-   605	  position: absolute;
-   606	  right: 14px;
-   607	  bottom: 58px;
-   608	  width: 230px;
-   609	  max-width: 85%;
-   610	  z-index: 10;
-   611	  pointer-events: none;
-   612	}
-   613	
-   614	.bt-top-title {
-   615	  color: #facc15;
-   616	  font-size: 12px;
-   617	  font-weight: 900;
-   618	  margin-bottom: 5px;
-   619	  text-shadow: 0 0 8px rgba(250,204,21,0.45);
-   620	}
-   621	
-   622	.bt-top-list {
-   623	  display: flex;
-   624	  flex-direction: column;
-   625	  gap: 5px;
-   626	}
-   627	
-   628	.bt-top-item {
-   629	  display: grid;
-   630	  grid-template-columns: 22px 30px 1fr auto;
-   631	  align-items: center;
-   632	  gap: 6px;
-   633	  background: rgba(15, 23, 42, 0.78);
-   634	  border: 1px solid rgba(255,255,255,0.14);
-   635	  border-radius: 12px;
-   636	  padding: 5px 7px;
-   637	  color: #fff;
-   638	  backdrop-filter: blur(8px);
-   639	}
-   640	
-   641	.bt-top-rank {
-   642	  font-size: 12px;
-   643	  font-weight: 900;
-   644	  color: #facc15;
-   645	}
-   646	
-   647	.bt-top-avatar {
-   648	  width: 28px;
-   649	  height: 28px;
-   650	  border-radius: 50%;
-   651	  object-fit: cover;
-   652	}
-   653	
-   654	.bt-top-name {
-   655	  font-size: 11px;
-   656	  font-weight: 800;
-   657	  overflow: hidden;
-   658	  white-space: nowrap;
-   659	  text-overflow: ellipsis;
-   660	}
-   661	
-   662	.bt-top-score {
-   663	  font-size: 12px;
-   664	  font-weight: 900;
-   665	  color: #38bdf8;
-   666	}
-   667	
-   668	@media (max-width: 600px) {
-   669	  .bt-gift-feed,
-   670	  .bt-top-supporters {
-   671	    position: static;
-   672	    width: 100%;
-   673	    max-width: 100%;
-   674	    margin-top: 6px;
-   675	  }
-   676	
-   677	  .bt-top-supporters {
-   678	    padding: 0 10px 8px;
-   679	  }
-   680	
-   681	  .bt-gift-feed {
-   682	    padding: 0 10px;
-   683	  }
-   684	}
-   685	
-   686	.bt-tap-avatar-bubble {
-   687	  position: absolute;
-   688	  width: 38px;
-   689	  height: 38px;
-   690	  z-index: 50;
-   691	  pointer-events: none;
-   692	  animation: btTapAvatarFloat 1.45s ease-out forwards;
-   693	  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
-   694	}
-   695	
-   696	.bt-tap-avatar-img {
-   697	  width: 38px;
-   698	  height: 38px;
-   699	  border-radius: 50%;
-   700	  object-fit: cover;
-   701	  border: 2px solid rgba(255,255,255,0.95);
-   702	  background: #fff;
-   703	}
-   704	
-   705	.bt-tap-avatar-bubble::after {
-   706	  content: none;
-   707	  display: none;
-   708	}
-   709	
-   710	@media (prefers-reduced-motion: reduce) {
-   711	  .bt-tap-avatar-bubble {
-   712	    animation: none !important;
-   713	    display: none !important;
-   714	  }
-   715	}
-   716	
-   717	@keyframes btTapAvatarFloat {
-   718	  0% {
-   719	    transform: translate(0, 0) scale(0.75);
-   720	    opacity: 0;
-   721	  }
-   722	
-   723	  15% {
-   724	    transform: translate(0, -12px) scale(1);
-   725	    opacity: 1;
-   726	  }
-   727	
-   728	  70% {
-   729	    opacity: 1;
-   730	  }
-   731	
-   732	  100% {
-   733	    transform: translate(var(--bt-tap-random-x, 0px), -120px) scale(1.15);
-   734	    opacity: 0;
-   735	  }
-   736	}
-   737	
-   738	@media (max-width: 600px) {
-   739	  .bt-tap-avatar-bubble {
-   740	    width: 34px;
-   741	    height: 34px;
-   742	  }
-   743	
-   744	  .bt-tap-avatar-img {
-   745	    width: 34px;
-   746	    height: 34px;
-   747	  }
-   748	}
-   749	
-   750	/* Minimized Battle Floating Indicator Styles */
-   751	.battle-mini-indicator {
-   752	  position: absolute;
-   753	  bottom: 80px; /* Sits elegantly above client input box which is usually at bottom */
-   754	  left: 16px;
-   755	  background: rgba(15, 23, 42, 0.95);
-   756	  backdrop-filter: blur(10px);
-   757	  -webkit-backdrop-filter: blur(10px);
-   758	  border: 1.5px solid rgba(255, 255, 255, 0.15);
-   759	  border-radius: 30px;
-   760	  padding: 6px 14px;
-   761	  display: flex;
-   762	  align-items: center;
-   763	  gap: 10px;
-   764	  color: #ffffff;
-   765	  font-size: 13px;
-   766	  font-weight: 500;
-   767	  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-   768	  z-index: 105;
-   769	  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-   770	  direction: rtl;
-   771	}
-   772	
-   773	.battle-mini-indicator:hover {
-   774	  transform: translateY(-2px);
-   775	  background: rgba(30, 41, 59, 0.98);
-   776	  border-color: rgba(255, 255, 255, 0.3);
-   777	}
-   778	
-   779	.mini-battle-badge {
-   780	  font-size: 11px;
-   781	  font-weight: bold;
-   782	  padding: 2px 7px;
-   783	  border-radius: 12px;
-   784	  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-   785	}
-   786	
-   787	.mini-battle-stat {
-   788	  font-family: inherit;
-   789	  font-size: 12px;
-   790	  color: #cbd5e1;
-   791	  border-left: 1px solid rgba(255, 255, 255, 0.15);
-   792	  padding-left: 10px;
-   793	}
-   794	
-   795	.mini-battle-score-pill {
-   796	  background: rgba(255, 255, 255, 0.1);
-   797	  border: 1px solid rgba(255, 255, 255, 0.1);
-   798	  padding: 2px 10px;
-   799	  border-radius: 20px;
-   800	  font-family: 'Courier New', Courier, monospace; /* monospace font for stable sizing of points */
-   801	  font-weight: bold;
-   802	  display: flex;
-   803	  align-items: center;
-   804	  gap: 4px;
-   805	}
-   806	
-   807	.p1-score-color {
-   808	  color: #3b82f6; /* Blue */
-   809	}
-   810	
-   811	.vs-divider {
-   812	  color: #94a3b8;
-   813	}
-   814	
-   815	.p2-score-color {
-   816	  color: #ef4444; /* Red */
-   817	}
-   818	
-   819	.mini-battle-expand-btn {
-   820	  color: #38bdf8;
-   821	  font-size: 14px;
-   822	  margin-right: 2px;
-   823	  display: flex;
-   824	  align-items: center;
-   825	}
-   826	
+/* Tiktok Live Style Battles */
+
+.battle-panel-container {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  color: #f1f5f9;
+  font-family: inherit;
+  z-index: 100;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.battle-header {
+  font-weight: 600;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.battle-round-info {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.battle-timer-badge {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  animation: pulse-timer 1s infinite alternate;
+}
+
+@keyframes pulse-timer {
+  0% { transform: scale(1); box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+  100% { transform: scale(1.05); box-shadow: 0 0 15px rgba(239, 68, 68, 0.8); }
+}
+
+.battle-vs-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px 0;
+  position: relative;
+}
+
+.battle-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.battle-avatar-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.pr-ring {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.sc-ring {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+}
+
+.battle-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #334155;
+  border: 2px solid rgba(15, 23, 42, 0.9);
+}
+
+.battle-player-name,
+.battle-player-name .user-identity-name {
+  font-size: 15px !important;
+  font-weight: 500;
+  color: #ffffff !important;
+  margin-bottom: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.battle-score {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 2px 0 6px 0;
+  font-family: monospace;
+}
+
+.player-left .battle-score {
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+.player-right .battle-score {
+  color: #f472b6;
+  text-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
+}
+
+.battle-vs-mark {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  font-style: italic;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 3px #000;
+  z-index: 5;
+  user-select: none;
+}
+
+.btn-support {
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-support-left {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+}
+.btn-support-left:hover {
+  background: linear-gradient(90deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+}
+.btn-support-left:active {
+  transform: scale(0.95);
+}
+
+.btn-support-right {
+  background: linear-gradient(90deg, #db2777, #be185d);
+}
+.btn-support-right:hover {
+  background: linear-gradient(90deg, #be185d, #9d174d);
+  transform: translateY(-1px);
+}
+.btn-support-right:active {
+  transform: scale(0.95);
+}
+
+/* Progress Slider */
+.battle-progress-wrapper {
+  margin: 14px 0;
+  width: 100%;
+}
+
+.battle-progress {
+  height: 12px;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6); /* Player 2 color */
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.battle-progress-p1 {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6); /* Player 1 color */
+  width: 50%;
+  border-right: 2px solid #ffffff;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+}
+
+/* Won Rounds Indicators (Tick / Dots) */
+.battle-won-rounds {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.round-won-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+}
+
+.player-left .round-won-dot.won {
+  background-color: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  border-color: #38bdf8;
+}
+
+.player-right .round-won-dot.won {
+  background-color: #f472b6;
+  box-shadow: 0 0 8px #f472b6;
+  border-color: #f472b6;
+}
+
+/* Support Actions Footer */
+.battle-support-actions {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+.bt-gift-btn {
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+  color: #1e1b4b;
+  border: none;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+.bt-gift-btn:hover {
+  background: linear-gradient(135deg, #facc15, #eab308);
+  transform: translateY(-1px);
+}
+
+.bt-cancel-btn {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-size: 10px;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bt-cancel-btn:hover {
+  background: rgba(239, 68, 68, 0.35);
+}
+
+.battle-status-msg {
+  /* font-size: 11px; */
+  color: #94a3b8;
+  /* font-weight: 500; */
+}
+
+/* Flying Gift Animation Overlay styles */
+.battle-flying-gift {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: inherit;
+  font-weight: bold;
+  animation: gift-fly-up 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.gift-fly-icon {
+  font-size: 38px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  animation: scale-bounce 0.4s ease alternate infinite;
+}
+
+.gift-fly-label {
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  margin-top: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+}
+
+@keyframes gift-fly-up {
+  0% { transform: translate(0, 150px) scale(0.4); opacity: 0; }
+  15% { transform: translate(0, 30px) scale(1.2); opacity: 1; }
+  25% { transform: translate(0, 0) scale(1); opacity: 1; }
+  75% { transform: translate(0, -50px) scale(1); opacity: 1; }
+  100% { transform: translate(0, -120px) scale(0.6); opacity: 0; }
+}
+
+@keyframes scale-bounce {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+/* Tap Effect anim */
+.battle-tap-ripple {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: tap-fade-out 0.6s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes tap-fade-out {
+  0% { transform: scale(0.2); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Battle gift picker modal customized CSS */
+#battle-gift-picker-modal .modal-content {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+#battle-gift-picker-modal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#battle-gift-picker-modal .modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.battle-gift-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.battle-gift-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.battle-gift-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.battle-gift-card.selected {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+.battle-gift-icon-view {
+  font-size: 32px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.battle-gift-name-view {
+  font-size: 11px;
+  font-weight: 700;
+  color: #cbd5e1;
+  display: block;
+}
+
+.battle-gift-price-view {
+  font-size: 9px;
+  font-weight: 500;
+  color: #eab308;
+  display: block;
+}
+
+/* Styled final result box CSS rules */
+.bt-final-result-box {
+  direction: rtl;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.bt-final-winner {
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.bt-final-winner.blue {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+}
+
+.bt-final-winner.pink {
+  background: linear-gradient(135deg, #ec4899, #7c3aed);
+}
+
+.bt-final-cup {
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.bt-final-winner-label {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.bt-final-winner-name {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.bt-final-draw {
+  background: linear-gradient(135deg, #64748b, #334155);
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.bt-final-reason {
+  background: #f1f5f9;
+  color: #334155;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.bt-final-score-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+  margin: 8px 0 10px;
+}
+
+.bt-final-score-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.bt-final-player-card {
+  border-radius: 12px;
+  padding: 10px 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.bt-final-player-card.blue {
+  border-top: 4px solid #0ea5e9;
+}
+
+.bt-final-player-card.pink {
+  border-top: 4px solid #ec4899;
+}
+
+.bt-final-player-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  min-height: 24px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.bt-final-player-name * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.bt-final-player-score {
+  font-size: 28px;
+  font-weight: 900;
+  color: #111827;
+  margin-top: 6px;
+}
+
+.bt-final-player-rounds {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.bt-final-vs {
+  align-self: center;
+  font-weight: 900;
+  color: #94a3b8;
+  padding: 0 2px;
+}
+
+@media (max-width: 480px) {
+  .bt-final-score-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bt-final-vs {
+    padding: 4px 0;
+  }
+}
+
+/* TikTok-style Battle Challenge Enhancements */
+.bt-gift-feed {
+  position: absolute;
+  left: 14px;
+  bottom: 58px;
+  width: 260px;
+  max-width: 85%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.bt-gift-feed-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 5px 10px 5px 5px;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+  animation: btGiftSlideIn .35s ease both;
+  backdrop-filter: blur(8px);
+}
+
+.bt-gift-feed-item.fade-out {
+  animation: btGiftFadeOut .55s ease both;
+}
+
+.bt-gift-feed-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bt-gift-feed-body {
+  min-width: 0;
+  flex: 1;
+  line-height: 1.2;
+}
+
+.bt-gift-feed-name {
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bt-gift-feed-text {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+.bt-gift-feed-gift {
+  color: #fde68a;
+  font-weight: 800;
+}
+
+.bt-gift-feed-qty {
+  font-size: 18px;
+  font-weight: 900;
+  color: #facc15;
+  text-shadow: 0 0 8px rgba(250,204,21,0.5);
+}
+
+@keyframes btGiftSlideIn {
+  from { transform: translateX(-40px) scale(.95); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes btGiftFadeOut {
+  to { transform: translateX(-30px) scale(.95); opacity: 0; }
+}
+
+.bt-top-supporters {
+  position: absolute;
+  right: 14px;
+  bottom: 58px;
+  width: 230px;
+  max-width: 85%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bt-top-title {
+  color: #facc15;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px rgba(250,204,21,0.45);
+}
+
+.bt-top-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bt-top-item {
+  display: grid;
+  grid-template-columns: 22px 30px 1fr auto;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  padding: 5px 7px;
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.bt-top-rank {
+  font-size: 12px;
+  font-weight: 900;
+  color: #facc15;
+}
+
+.bt-top-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bt-top-name {
+  font-size: 11px;
+  font-weight: 800;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bt-top-score {
+  font-size: 12px;
+  font-weight: 900;
+  color: #38bdf8;
+}
+
+@media (max-width: 600px) {
+  .bt-gift-feed,
+  .bt-top-supporters {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 6px;
+  }
+
+  .bt-top-supporters {
+    padding: 0 10px 8px;
+  }
+
+  .bt-gift-feed {
+    padding: 0 10px;
+  }
+}
+
+.bt-tap-avatar-bubble {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  z-index: 50;
+  pointer-events: none;
+  animation: btTapAvatarFloat 1.45s ease-out forwards;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+}
+
+.bt-tap-avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.95);
+  background: #fff;
+}
+
+.bt-tap-avatar-bubble::after {
+  content: none;
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-tap-avatar-bubble {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+@keyframes btTapAvatarFloat {
+  0% {
+    transform: translate(0, 0) scale(0.75);
+    opacity: 0;
+  }
+
+  15% {
+    transform: translate(0, -12px) scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--bt-tap-random-x, 0px), -120px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .bt-tap-avatar-bubble {
+    width: 34px;
+    height: 34px;
+  }
+
+  .bt-tap-avatar-img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Minimized Battle Floating Indicator Styles */
+.battle-mini-indicator {
+  position: absolute;
+  bottom: 80px; /* Sits elegantly above client input box which is usually at bottom */
+  left: 16px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  z-index: 105;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  direction: rtl;
+}
+
+.battle-mini-indicator:hover {
+  transform: translateY(-2px);
+  background: rgba(30, 41, 59, 0.98);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mini-battle-badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.mini-battle-stat {
+  font-family: inherit;
+  font-size: 12px;
+  color: #cbd5e1;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 10px;
+}
+
+.mini-battle-score-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-family: 'Courier New', Courier, monospace; /* monospace font for stable sizing of points */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.p1-score-color {
+  color: #3b82f6; /* Blue */
+}
+
+.vs-divider {
+  color: #94a3b8;
+}
+
+.p2-score-color {
+  color: #ef4444; /* Red */
+}
+
+.mini-battle-expand-btn {
+  color: #38bdf8;
+  font-size: 14px;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+}

@@ -494,7 +494,7 @@ window.toggleHiddenMode = function(button) {
         window.__mainScriptLoadingPromise = new Promise((resolve, reject) => {
           const mainScript = document.createElement('script');
           mainScript.type = 'module';
-          mainScript.src = '/dist/chat-main.bmt5vchdi.js';
+          mainScript.src = '/dist/chat-main.bmt5vzz9g.js';
 
           mainScript.onload = () => resolve();
           mainScript.onerror = (err) => {

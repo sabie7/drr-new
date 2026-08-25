@@ -1,46 +1,49 @@
-# Kaz Chat — Unified Source Build
+# Kaz Alwadi Chat — دردشة عربية
 
-**Stack:** Vue 3.5 · Tailwind CSS 4 · Vite 8 · Node 20+ · Socket.IO 4.8.3
-**Developer:** Kaz alwadi (c) 2026
+نظام دردشة عربي كامل (سيرفر + عميل + لوحة تحكم) من تطوير **Kaz Alwadi © 2026**.
 
-Professionally split source repository. Minified build files are not stored here.
-Each component is generated with a single command.
+## التشغيل المحلي
 
-## Repository Map
-
-| Path | Description | Guide |
-|------|-------------|-------|
-| client/js/main-parts/ | Client chat — 28 topic parts | MANIFEST.md | 
-| client/js/*.js + client/css/ | Live client units + styles | - |
-| src/server-parts/ | Server — 16 topic parts | MANIFEST.md |
-| cp-app/ | Control Panel (Vue 3.5 + Tailwind CSS 4) full source | - |
-| cp-dist/ and dist/ | Ready-to-deploy build outputs (latest) | - |
-| assets/flag/ | Country flags | - |
-| client/uploads/site/ | Site identity (favicon/banner/avatar) | - |
-
-> Heavy user media is NOT stored here — managed directly on hosting.
-
-## Build
-
-\ash
+```bash
 npm install
-npm run build
-npm run build:panel
-\\n
-| Command | Output |
+cp .env.example .env   # ثم عدّل القيم
+node src/modern-server.js
+```
+
+السيرفر يعمل على `http://localhost:3000` (أو المنفذ المحدد في `.env`).
+
+## متغيرات البيئة
+
+| المتغير | الوصف |
 |---------|--------|
-| build:server | dist-server/server.ver.js + Source Map |
-| build:chat   | client/dist/chat-main.ver.js prints VERSION_TOKEN |
-| build:panel  | cp-dist/ complete |
+| `PORT` | منفذ السيرفر (افتراضي 3000) |
+| `MONGO_URI` | رابط قاعدة بيانات MongoDB |
+| `JWT_SECRET` | مفتاح التوقيع للجلسات |
+| `ADMIN_PASS` | كلمة مرور المدير |
+| `ADMIN_USER` | اسم مستخدم المدير (افتراضي: admin) |
 
-## Deploy
+## البنية
 
-1. Upload build outputs to hosting.
-2. Update v= numbers in landing.js / index.html.
-3. Hard restart.
+```
+├── index.html          # صفحة الدخول الرئيسية
+├── src/                # كود السيرفر
+│   ├── modern-server.js # السيرفر الرئيسي
+│   ├── config.js       # الإعدادات
+│   ├── logger.js       # التسجيل
+│   ├── db/             # قاعدة البيانات
+│   └── utils/          # أدوات مساعدة
+├── client/             # ملفات العميل
+│   ├── js/             # JavaScript
+│   ├── css/            # التنسيقات
+│   └── dist/           # الحزمة المبنية
+├── cp-app/             # لوحة التحكم (Vue 3)
+└── assets/             # الوسائط
+```
 
-## Maintenance Rules
+## لوحة التحكم
 
-- Parts are ORDERED: never reorder or renumber.
-- Any client/js change requires version bump.
-- Emoji requires type field (server adds it automatically).
+تُفتح على `/cp` — مخصصة للإدارة فقط.
+
+## الترخيص
+
+MIT — Kaz Alwadi © 2026

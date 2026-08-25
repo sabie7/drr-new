@@ -1,465 +1,464 @@
-﻿     1	/* ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ
-     2	   LEGACY FEATURES ظ¤ gifts picker, car game, custom modals,
-     3	   games launcher (rebuilt from the recovered sor/scraped sources)
-     4	   ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ */
-     5	
-     6	/* ظ¤ظ¤ظ¤ Gifts picker ظ¤ظ¤ظ¤ */
-     7	.gifts-picker-overlay {
-     8	  position: fixed;
-     9	  inset: 0;
-    10	  z-index: 1080;
-    11	  display: flex;
-    12	  align-items: center;
-    13	  justify-content: center;
-    14	  background: rgba(0, 0, 0, 0.55);
-    15	  opacity: 0;
-    16	  visibility: hidden;
-    17	  transition: opacity 0.25s ease, visibility 0.25s ease;
-    18	}
-    19	.gifts-picker-overlay.open {
-    20	  opacity: 1;
-    21	  visibility: visible;
-    22	}
-    23	.gifts-picker {
-    24	  width: min(440px, 92vw);
-    25	  max-height: 82vh;
-    26	  background: var(--modal-bg, #2a2a35);
-    27	  border: 1px solid #555;
-    28	  border-radius: 12px;
-    29	  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-    30	  overflow: hidden;
-    31	  display: flex;
-    32	  flex-direction: column;
-    33	}
-    34	.gifts-picker-header {
-    35	  display: flex;
-    36	  align-items: center;
-    37	  justify-content: space-between;
-    38	  padding: 10px 14px;
-    39	  background: linear-gradient(135deg, #c2185b, #7b1fa2);
-    40	  color: #fff;
-    41	  font-weight: bold;
-    42	  font-size: 15px;
-    43	}
-    44	.gifts-picker-close {
-    45	  background: rgba(255, 255, 255, 0.2);
-    46	  border: none;
-    47	  color: #fff;
-    48	  font-size: 20px;
-    49	  line-height: 1;
-    50	  border-radius: 6px;
-    51	  width: 28px;
-    52	  height: 28px;
-    53	}
-    54	.gifts-picker-close:hover { background: rgba(255, 255, 255, 0.35); }
-    55	.gifts-picker-grid {
-    56	  display: grid;
-    57	  grid-template-columns: repeat(4, 1fr);
-    58	  gap: 10px;
-    59	  padding: 14px;
-    60	  overflow-y: auto;
-    61	  background: var(--modal-bg, #2a2a35);
-    62	}
-    63	.gifts-picker-item {
-    64	  display: flex;
-    65	  flex-direction: column;
-    66	  align-items: center;
-    67	  gap: 6px;
-    68	  padding: 10px 4px;
-    69	  border: 1px solid #555;
-    70	  border-radius: 10px;
-    71	  background: rgba(255, 255, 255, 0.06);
-    72	  color: #fff;
-    73	  cursor: pointer;
-    74	  transition: transform 0.15s ease, border-color 0.15s ease;
-    75	}
-    76	.gifts-picker-item:hover {
-    77	  transform: translateY(-3px) scale(1.04);
-    78	  border-color: #e91e63;
-    79	}
-    80	.gifts-picker-icon { font-size: 30px; line-height: 1; }
-    81	.gifts-picker-name { font-size: 12px; font-weight: bold; }
-    82	
-    83	/* ظ¤ظ¤ظ¤ Game overlay + stage ظ¤ظ¤ظ¤ */
-    84	.game-overlay {
-    85	  position: fixed;
-    86	  inset: 0;
-    87	  z-index: 1055;
-    88	  display: flex;
-    89	  flex-direction: column;
-    90	  background: rgba(10, 12, 20, 0.96);
-    91	}
-    92	.game-overlay-header {
-    93	  display: flex;
-    94	  align-items: center;
-    95	  justify-content: space-between;
-    96	  padding: 8px 12px;
-    97	  background: #1c1e2a;
-    98	  border-bottom: 1px solid #333;
-    99	  color: #fff;
-   100	}
-   101	#game-overlay-title {
-   102	  font-weight: bold;
-   103	  font-size: 15px;
-   104	}
-   105	.game-overlay-actions {
-   106	  display: flex;
-   107	  align-items: center;
-   108	  gap: 8px;
-   109	}
-   110	.game-overlay-actions button {
-   111	  background: rgba(255, 255, 255, 0.12);
-   112	  border: 1px solid rgba(255, 255, 255, 0.2);
-   113	  color: #fff;
-   114	  border-radius: 6px;
-   115	  width: 30px;
-   116	  height: 30px;
-   117	}
-   118	.game-overlay-actions button:hover { background: rgba(255, 255, 255, 0.25); }
-   119	.game-stage {
-   120	  flex: 1 1 auto;
-   121	  position: relative;
-   122	  overflow: hidden;
-   123	  min-height: 0;
-   124	}
-   125	.game-voice-controls {
-   126	  display: flex;
-   127	  align-items: center;
-   128	  justify-content: center;
-   129	  gap: 10px;
-   130	  padding: 6px 10px;
-   131	  background: #1c1e2a;
-   132	  border-top: 1px solid #333;
-   133	  color: #ddd;
-   134	  font-size: 12px;
-   135	}
-   136	.game-voice-controls button {
-   137	  background: rgba(255, 255, 255, 0.12);
-   138	  border: 1px solid rgba(255, 255, 255, 0.2);
-   139	  color: #fff;
-   140	  border-radius: 6px;
-   141	  width: 30px;
-   142	  height: 30px;
-   143	}
-   144	.game-minimized-indicator {
-   145	  position: fixed;
-   146	  bottom: 70px;
-   147	  right: 14px;
-   148	  z-index: 1056;
-   149	  display: flex;
-   150	  align-items: center;
-   151	  gap: 8px;
-   152	  background: #1c1e2a;
-   153	  border: 1px solid #444;
-   154	  border-radius: 20px;
-   155	  padding: 8px 14px;
-   156	  color: #fff;
-   157	  cursor: pointer;
-   158	  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-   159	}
-   160	
-   161	/* ظ¤ظ¤ظ¤ Car game canvas ظ¤ظ¤ظ¤ */
-   162	.car-game-canvas {
-   163	  width: 100%;
-   164	  height: 100%;
-   165	  display: block;
-   166	  background: #222831;
-   167	}
-   168	
-   169	/* ظ¤ظ¤ظ¤ Emoji picker text items ظ¤ظ¤ظ¤ */
-   170	.emoji-picker-content .picker-item {
-   171	  width: 38px;
-   172	  height: 38px;
-   173	  font-size: 26px;
-   174	  line-height: 1;
-   175	  border-radius: 8px;
-   176	  user-select: none;
-   177	}
-   178	.emoji-picker-content .picker-item:hover {
-   179	  background: #e9ecef;
-   180	  transform: scale(1.15);
-   181	}
-   182	
-   183	/* ظ¤ظ¤ظ¤ Custom modals toolbar + modal ظ¤ظ¤ظ¤ */
-   184	.legacy-custom-toolbar {
-   185	  display: flex;
-   186	  align-items: center;
-   187	  justify-content: flex-start;
-   188	  flex-wrap: wrap;
-   189	  gap: 4px;
-   190	  padding: 0 2px 4px 2px;
-   191	}
-   192	.legacy-custom-toolbar .tab-button {
-   193	  padding: 3px 10px;
-   194	  font-size: 11px;
-   195	  font-weight: bold;
-   196	  background-color: rgba(255, 255, 255, 0.16);
-   197	  color: #fff;
-   198	  border: 1px solid rgba(255, 255, 255, 0.25);
-   199	  border-radius: 14px;
-   200	  cursor: pointer;
-   201	  transition: background-color 0.2s ease, transform 0.15s ease;
-   202	  white-space: nowrap;
-   203	}
-   204	.legacy-custom-toolbar .tab-button:hover {
-   205	  background-color: rgba(255, 255, 255, 0.32);
-   206	  transform: translateY(-1px);
-   207	}
-   208	.legacy-custom-modal {
-   209	  position: fixed;
-   210	  inset: 0;
-   211	  z-index: 1070;
-   212	  background: rgba(0, 0, 0, 0.6);
-   213	  display: none;
-   214	  align-items: center;
-   215	  justify-content: center;
-   216	}
-   217	.legacy-custom-modal .modal-content {
-   218	  position: relative;
-   219	  width: min(520px, 92vw);
-   220	  max-height: 84vh;
-   221	  overflow-y: auto;
-   222	  background: linear-gradient(160deg, #1f2030, #2d2f45);
-   223	  border: 1px solid #555;
-   224	  border-radius: 12px;
-   225	  padding: 18px 20px 6px;
-   226	  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-   227	}
-   228	.legacy-custom-close {
-   229	  position: absolute;
-   230	  top: 8px;
-   231	  left: 14px;
-   232	  color: #fff;
-   233	  font-size: 26px;
-   234	  line-height: 1;
-   235	  opacity: 0.85;
-   236	}
-   237	.legacy-custom-close:hover { opacity: 1; }
-   238	.legacy-custom-title {
-   239	  color: #fff;
-   240	  font-size: 20px;
-   241	  font-weight: bold;
-   242	  text-align: center;
-   243	  margin: 0 0 14px 0;
-   244	}
-   245	
-   246	/* ظ¤ظ¤ظ¤ Games launcher (sidebar) ظ¤ظ¤ظ¤ */
-   247	.games-launcher-card {
-   248	  background: linear-gradient(135deg, #1a936f, #0b6e4f);
-   249	  border: 1px solid #555;
-   250	  border-radius: 12px;
-   251	  padding: 16px 12px;
-   252	  color: #fff;
-   253	  text-align: center;
-   254	}
-   255	.games-launcher-icon { font-size: 42px; line-height: 1; margin-bottom: 6px; }
-   256	.games-launcher-title { font-size: 17px; font-weight: bold; }
-   257	.games-launcher-desc { font-size: 12px; opacity: 0.9; margin-bottom: 10px; }
-   258	
-   259	/* ================================================================
-   260	   ALL-DEVICE COMPATIBILITY ظ¤ consolidated responsive layer.
-   261	   Loaded last (index.css order) so these override base rules.
-   262	   ================================================================ */
-   263	
-   264	#btn-profile-reveal { display: none !important; }
-   265	
-   266	/* ظ¤ظ¤ Tiny phones (<= 400px) ظ¤ظ¤ */
-   267	@media (max-width: 400px) {
-   268	  #chat-form .btn-input-action { padding: 3px; width: 30px; }
-   269	  #chat-form .btn-send { font-size: 12px; padding: 5px 8px; }
-   270	  #chat-form .btn-send i { display: none; }
-   271	  #chat-input { font-size: 14px; }
-   272	  .bottom-tabs-bar { font-size: 11px; }
-   273	  .bottom-tabs-bar .tab-btn { padding: 5px 2px; }
-   274	  .bottom-tabs-bar .tab-btn i { font-size: 14px; }
-   275	  #profile-mid-section .d-flex.justify-content-between { padding: 0 10px !important; }
-   276	  .landing-header { padding: 6px 8px !important; }
-   277	  #header-site-name { font-size: 13px; }
-   278	  .pm-panel { width: 100% !important; }
-   279	  .message-row .message-avatar { width: 26px !important; height: 26px !important; }
-   280	  .btn-profile-action { font-size: 12px !important; }
-   281	  .battle-vs-wrapper { padding: 4px; }
-   282	  .battle-avatar { width: 52px !important; height: 52px !important; }
-   283	}
-   284	
-   285	/* ظ¤ظ¤ Phones (<= 576px) ظ¤ظ¤ */
-   286	@media (max-width: 575.98px) {
-   287	  #chat-shell, #login-overlay { height: var(--chat-viewport-height); }
-   288	  .bottom-tabs-bar { padding: 2px 1px; }
-   289	  .bottom-tabs-bar .tab-btn { font-size: 11.5px; }
-   290	  .tab-btn .badge { font-size: 0.6rem; }
-   291	  #chat-form { gap: 3px; }
-   292	  #chat-form .btn-input-action { padding: 4px; width: 34px; }
-   293	  #emoji-btn img { width: 28px; padding: 4px; }
-   294	  .mic-container { gap: 3px; }
-   295	  .btn-mic { width: 46px; height: 46px; }
-   296	  .voice-top-bar { padding: 3px 6px; }
-   297	  .landing-top-content .site-banner { max-height: 160px; object-fit: cover; }
-   298	  .toast-container { right: 8px; left: 8px; align-items: stretch; }
-   299	  .toast { font-size: 13px; padding: 8px 12px; }
-   300	  .modal-dialog { margin: 8px auto; }
-   301	  #userProfileModal .modal-dialog,
-   302	  #effectsModal .modal-dialog,
-   303	  #reportUserModal .modal-dialog,
-   304	  #roomMusicModal .modal-dialog,
-   305	  #modPermissionsModal .modal-dialog,
-   306	  #createRoomModal .modal-dialog,
-   307	  #passwordModal .modal-dialog,
-   308	  #manageAddonsModal .modal-dialog {
-   309	    max-width: calc(100% - 16px) !important;
-   310	    margin: 8px auto;
-   311	  }
-   312	  .profile-actions-grid { grid-template-columns: repeat(3, 1fr); }
-   313	  .btn-profile-action { height: auto; min-height: 36px; padding: 4px 2px; font-size: 12px; gap: 3px; }
-   314	  .btn-profile-action span { line-height: 1.15; }
-   315	  #profile-actions-grid { max-height: 40vh; overflow-y: auto; }
-   316	  #profile-mid-section { margin-top: -55px; }
-   317	  #profile-mid-section .profile-avatar-frame { transform: scale(0.92); }
-   318	  .message-text { word-break: break-word; }
-   319	  .message-image-preview, .chat-image { max-width: 145px !important; max-height: 140px !important; }
-   320	  .wall-post .card-body { font-size: 14px; }
-   321	  .wall-post .card-body img { max-width: 200px; }
-   322	  .sidebar-container { --sidebar-width: 88vw; }
-   323	  .extra-actions-menu { right: 0; left: auto; }
-   324	  .zajel-ticker-bar, .admin-ads-ticker-bar { font-size: 12px; }
-   325	  .battle-panel-container { bottom: 0; left: 0; right: 0; width: 100%; }
-   326	  .battle-mini-indicator { bottom: 52px; }
-   327	  .gifts-picker { width: 92vw !important; max-height: 80vh; }
-   328	  .gifts-picker-grid { grid-template-columns: repeat(4, 1fr) !important; }
-   329	  .emoji-picker { width: 92vw !important; left: 4px !important; right: 4px !important; }
-   330	}
-   331	
-   332	/* ظ¤ظ¤ Phones & small tablets (<= 768px) ظ¤ظ¤ */
-   333	@media (max-width: 767.98px) {
-   334	  #chat-ui { margin-right: 0 !important; }
-   335	  .landing-header { position: relative; z-index: 20; }
-   336	  .sidebar-overlay { bottom: var(--bottom-tabs-height, 35px); }
-   337	  .sidebar-container { --sidebar-width: 82vw; }
-   338	  #rooms-grid-container .col { flex: 0 0 auto; width: 50%; }
-   339	  .rooms-grid-modal .room-select-card { min-height: 110px; }
-   340	  .landing-middle-area { min-height: 0; }
-   341	  #footer-keywords .badge { font-size: 11px; }
-   342	  .pm-panel { bottom: 0; width: 100%; max-height: 55vh; }
-   343	  .battle-support-actions { gap: 6px; }
-   344	  .bt-gift-btn, .bt-cancel-btn { font-size: 12px; padding: 4px 8px; }
-   345	  .profile-info-bar { flex-wrap: wrap; }
-   346	  #userProfileModal .modal-header { height: 120px !important; min-height: 120px !important; }
-   347	  #userProfileModal #profile-cover { height: 120px !important; }
-   348	  #profile-mid-section .profile-avatar-frame { margin-top: -18px; }
-   349	}
-   350	
-   351	/* ظ¤ظ¤ Tablets (<= 991.98px) ظ¤ظ¤ */
-   352	@media (max-width: 991.98px) {
-   353	  .sidebar-container { --sidebar-width: 74vw; }
-   354	  #chat-ui { margin-right: 0 !important; }
-   355	  .landing-top-content { max-width: 100%; }
-   356	  .landing-middle-area .d-flex.justify-content-between { padding: 0 6px; }
-   357	  .profile-actions-grid { grid-template-columns: repeat(3, 1fr); }
-   358	  .btn-profile-action { min-height: 38px; }
-   359	  #rooms-grid-container .col { flex: 0 0 auto; width: 33.333%; }
-   360	  .room-select-card .card-body h6 { font-size: 14px; }
-   361	}
-   362	
-   363	/* ظ¤ظ¤ Laptops / desktops (>= 992px): restore the classic right-dock ظ¤ظ¤ */
-   364	@media (min-width: 992px) {
-   365	  .profile-actions-grid { grid-template-columns: repeat(4, 1fr); }
-   366	  .btn-profile-action { height: 32px; font-size: 13px; }
-   367	  #chat-ui { margin-right: var(--sidebar-width); }
-   368	  .sidebar-container { --sidebar-width: 340px; --sidebar-width: min(340px, 30vw); }
-   369	  .toast-container { bottom: 20px; right: 20px; }
-   370	  .landing-middle-area { max-width: 760px; margin: 0 auto; width: 100%; }
-   371	  .site-banner-container img { max-height: 200px; object-fit: cover; }
-   372	}
-   373	
-   374	/* ظ¤ظ¤ Wide screens (>= 1400px) ظ¤ظ¤ */
-   375	@media (min-width: 1400px) {
-   376	  .sidebar-container { --sidebar-width: 400px; --sidebar-width: min(400px, 28vw); }
-   377	  #messages-container { font-size: 16px; }
-   378	  .landing-middle-area { max-width: 860px; }
-   379	  .profile-actions-grid { grid-template-columns: repeat(4, 1fr); }
-   380	}
-   381	
-   382	/* ظ¤ظ¤ Height-constrained laptops (short screens): keep tabs visible ظ¤ظ¤ */
-   383	@media (max-height: 600px) and (min-width: 768px) {
-   384	  .landing-header { padding: 4px 8px; }
-   385	  #userProfileModal .modal-header { height: 110px !important; min-height: 110px !important; }
-   386	  #userProfileModal #profile-cover { height: 110px !important; }
-   387	  .profile-actions-grid { max-height: 34vh; overflow-y: auto; }
-   388	}
-   389	
-   390	/* ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ
-   391	   ALL-DEVICE TOUCH / LAYOUT COMPATIBILITY LAYER
-   392	   Goal: buttons click reliably with both mouse (laptop/desktop) and
-   393	   touch (iPhone/Android/touch-laptops), and the chat input bar keeps
-   394	   a clean, correctly shaped layout on small screens.
-   395	   ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ */
-   396	
-   397	/* Legacy iOS 11 / 12: safe-area-inset used the `constant()` keyword
-   398	   before `env()` existed. Without this the bottom input bar rides up
-   399	   under the home indicator on older iPhones. */
-   400	@supports (padding: constant(safe-area-inset-bottom)) {
-   401	  #chat-ui,
-   402	  .chat-input-container {
-   403	    padding-bottom: constant(safe-area-inset-bottom);
-   404	  }
-   405	  #chat-ui {
-   406	    padding-left: constant(safe-area-inset-left);
-   407	    padding-right: constant(safe-area-inset-right);
-   408	  }
-   409	}
-   410	
-   411	/* Touch devices (iPhones, tablets, touch laptops): larger, aligned,
-   412	   correctly shaped tap targets. The default action buttons are only
-   413	   32px ظ¤ below the comfortable 40-44px touch target. */
-   414	@media (hover: none), (pointer: coarse) {
-   415	  button, a, input, .btn, [role="button"] {
-   416	    -webkit-tap-highlight-color: transparent;
-   417	  }
-   418	
-   419	  /* input-bar action buttons: grow to a finger-friendly size and
-   420	     keep square corners consistent across iOS/Android */
-   421	  .btn-input-action {
-   422	    width: 40px !important;
-   423	    height: 40px !important;
-   424	    min-width: 40px;
-   425	    min-height: 40px;
-   426	    padding: 0 !important;
-   427	  }
-   428	
-   429	  .extra-actions-menu .btn-input-action {
-   430	    width: 42px !important;
-   431	    height: 42px !important;
-   432	  }
-   433	
-   434	  .btn-send {
-   435	    min-height: 40px;
-   436	    height: 40px;
-   437	    padding: 0 12px;
-   438	  }
-   439	
-   440	  .chat-input-field,
-   441	  #chat-input {
-   442	    height: 40px !important;
-   443	    min-height: 40px !important;
-   444	  }
-   445	
-   446	  .chat-input-container {
-   447	    padding-top: 6px;
-   448	    padding-bottom: max(6px, env(safe-area-inset-bottom));
-   449	  }
-   450	
-   451	  /* pressed feedback because :hover never fires on touch */
-   452	  .btn-input-action:active, .btn-send:active { opacity: 0.7; }
-   453	}
-   454	
-   455	/* Emoji picker / extra-actions must never overflow a very narrow phone */
-   456	@media (max-width: 380px) {
-   457	  .extra-actions-menu {
-   458	    left: auto !important;
-   459	    right: 0;
-   460	    max-width: calc(100vw - 16px);
-   461	    flex-wrap: wrap;
-   462	  }
-   463	  .extra-actions-menu .btn-input-action { width: 40px !important; height: 40px !important; }
-   464	}
-   465	
+/* ══════════════════════════════════════════════════════════════
+   LEGACY FEATURES — gifts picker, car game, custom modals,
+   games launcher (rebuilt from the recovered sor/scraped sources)
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─── Gifts picker ─── */
+.gifts-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.gifts-picker-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.gifts-picker {
+  width: min(440px, 92vw);
+  max-height: 82vh;
+  background: var(--modal-bg, #2a2a35);
+  border: 1px solid #555;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.gifts-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #c2185b, #7b1fa2);
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+}
+.gifts-picker-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+}
+.gifts-picker-close:hover { background: rgba(255, 255, 255, 0.35); }
+.gifts-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 14px;
+  overflow-y: auto;
+  background: var(--modal-bg, #2a2a35);
+}
+.gifts-picker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 4px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.gifts-picker-item:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: #e91e63;
+}
+.gifts-picker-icon { font-size: 30px; line-height: 1; }
+.gifts-picker-name { font-size: 12px; font-weight: bold; }
+
+/* ─── Game overlay + stage ─── */
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1055;
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 12, 20, 0.96);
+}
+.game-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #1c1e2a;
+  border-bottom: 1px solid #333;
+  color: #fff;
+}
+#game-overlay-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+.game-overlay-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.game-overlay-actions button {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+}
+.game-overlay-actions button:hover { background: rgba(255, 255, 255, 0.25); }
+.game-stage {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+.game-voice-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: #1c1e2a;
+  border-top: 1px solid #333;
+  color: #ddd;
+  font-size: 12px;
+}
+.game-voice-controls button {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+}
+.game-minimized-indicator {
+  position: fixed;
+  bottom: 70px;
+  right: 14px;
+  z-index: 1056;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1c1e2a;
+  border: 1px solid #444;
+  border-radius: 20px;
+  padding: 8px 14px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Car game canvas ─── */
+.car-game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #222831;
+}
+
+/* ─── Emoji picker text items ─── */
+.emoji-picker-content .picker-item {
+  width: 38px;
+  height: 38px;
+  font-size: 26px;
+  line-height: 1;
+  border-radius: 8px;
+  user-select: none;
+}
+.emoji-picker-content .picker-item:hover {
+  background: #e9ecef;
+  transform: scale(1.15);
+}
+
+/* ─── Custom modals toolbar + modal ─── */
+.legacy-custom-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 2px 4px 2px;
+}
+.legacy-custom-toolbar .tab-button {
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.legacy-custom-toolbar .tab-button:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
+}
+.legacy-custom-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1070;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.legacy-custom-modal .modal-content {
+  position: relative;
+  width: min(520px, 92vw);
+  max-height: 84vh;
+  overflow-y: auto;
+  background: linear-gradient(160deg, #1f2030, #2d2f45);
+  border: 1px solid #555;
+  border-radius: 12px;
+  padding: 18px 20px 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+.legacy-custom-close {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  opacity: 0.85;
+}
+.legacy-custom-close:hover { opacity: 1; }
+.legacy-custom-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 14px 0;
+}
+
+/* ─── Games launcher (sidebar) ─── */
+.games-launcher-card {
+  background: linear-gradient(135deg, #1a936f, #0b6e4f);
+  border: 1px solid #555;
+  border-radius: 12px;
+  padding: 16px 12px;
+  color: #fff;
+  text-align: center;
+}
+.games-launcher-icon { font-size: 42px; line-height: 1; margin-bottom: 6px; }
+.games-launcher-title { font-size: 17px; font-weight: bold; }
+.games-launcher-desc { font-size: 12px; opacity: 0.9; margin-bottom: 10px; }
+
+/* ================================================================
+   ALL-DEVICE COMPATIBILITY — consolidated responsive layer.
+   Loaded last (index.css order) so these override base rules.
+   ================================================================ */
+
+#btn-profile-reveal { display: none !important; }
+
+/* ── Tiny phones (<= 400px) ── */
+@media (max-width: 400px) {
+  #chat-form .btn-input-action { padding: 3px; width: 30px; }
+  #chat-form .btn-send { font-size: 12px; padding: 5px 8px; }
+  #chat-form .btn-send i { display: none; }
+  #chat-input { font-size: 14px; }
+  .bottom-tabs-bar { font-size: 11px; }
+  .bottom-tabs-bar .tab-btn { padding: 5px 2px; }
+  .bottom-tabs-bar .tab-btn i { font-size: 14px; }
+  #profile-mid-section .d-flex.justify-content-between { padding: 0 10px !important; }
+  .landing-header { padding: 6px 8px !important; }
+  #header-site-name { font-size: 13px; }
+  .pm-panel { width: 100% !important; }
+  .message-row .message-avatar { width: 26px !important; height: 26px !important; }
+  .btn-profile-action { font-size: 12px !important; }
+  .battle-vs-wrapper { padding: 4px; }
+  .battle-avatar { width: 52px !important; height: 52px !important; }
+}
+
+/* ── Phones (<= 576px) ── */
+@media (max-width: 575.98px) {
+  #chat-shell, #login-overlay { height: var(--chat-viewport-height); }
+  .bottom-tabs-bar { padding: 2px 1px; }
+  .bottom-tabs-bar .tab-btn { font-size: 11.5px; }
+  .tab-btn .badge { font-size: 0.6rem; }
+  #chat-form { gap: 3px; }
+  #chat-form .btn-input-action { padding: 4px; width: 34px; }
+  #emoji-btn img { width: 28px; padding: 4px; }
+  .mic-container { gap: 3px; }
+  .btn-mic { width: 46px; height: 46px; }
+  .voice-top-bar { padding: 3px 6px; }
+  .landing-top-content .site-banner { max-height: 160px; object-fit: cover; }
+  .toast-container { right: 8px; left: 8px; align-items: stretch; }
+  .toast { font-size: 13px; padding: 8px 12px; }
+  .modal-dialog { margin: 8px auto; }
+  #userProfileModal .modal-dialog,
+  #effectsModal .modal-dialog,
+  #reportUserModal .modal-dialog,
+  #roomMusicModal .modal-dialog,
+  #modPermissionsModal .modal-dialog,
+  #createRoomModal .modal-dialog,
+  #passwordModal .modal-dialog,
+  #manageAddonsModal .modal-dialog {
+    max-width: calc(100% - 16px) !important;
+    margin: 8px auto;
+  }
+  .profile-actions-grid { grid-template-columns: repeat(3, 1fr); }
+  .btn-profile-action { height: auto; min-height: 36px; padding: 4px 2px; font-size: 12px; gap: 3px; }
+  .btn-profile-action span { line-height: 1.15; }
+  #profile-actions-grid { max-height: 40vh; overflow-y: auto; }
+  #profile-mid-section { margin-top: -55px; }
+  #profile-mid-section .profile-avatar-frame { transform: scale(0.92); }
+  .message-text { word-break: break-word; }
+  .message-image-preview, .chat-image { max-width: 145px !important; max-height: 140px !important; }
+  .wall-post .card-body { font-size: 14px; }
+  .wall-post .card-body img { max-width: 200px; }
+  .sidebar-container { --sidebar-width: 88vw; }
+  .extra-actions-menu { right: 0; left: auto; }
+  .zajel-ticker-bar, .admin-ads-ticker-bar { font-size: 12px; }
+  .battle-panel-container { bottom: 0; left: 0; right: 0; width: 100%; }
+  .battle-mini-indicator { bottom: 52px; }
+  .gifts-picker { width: 92vw !important; max-height: 80vh; }
+  .gifts-picker-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  .emoji-picker { width: 92vw !important; left: 4px !important; right: 4px !important; }
+}
+
+/* ── Phones & small tablets (<= 768px) ── */
+@media (max-width: 767.98px) {
+  #chat-ui { margin-right: 0 !important; }
+  .landing-header { position: relative; z-index: 20; }
+  .sidebar-overlay { bottom: var(--bottom-tabs-height, 35px); }
+  .sidebar-container { --sidebar-width: 82vw; }
+  #rooms-grid-container .col { flex: 0 0 auto; width: 50%; }
+  .rooms-grid-modal .room-select-card { min-height: 110px; }
+  .landing-middle-area { min-height: 0; }
+  #footer-keywords .badge { font-size: 11px; }
+  .pm-panel { bottom: 0; width: 100%; max-height: 55vh; }
+  .battle-support-actions { gap: 6px; }
+  .bt-gift-btn, .bt-cancel-btn { font-size: 12px; padding: 4px 8px; }
+  .profile-info-bar { flex-wrap: wrap; }
+  #userProfileModal .modal-header { height: 120px !important; min-height: 120px !important; }
+  #userProfileModal #profile-cover { height: 120px !important; }
+  #profile-mid-section .profile-avatar-frame { margin-top: -18px; }
+}
+
+/* ── Tablets (<= 991.98px) ── */
+@media (max-width: 991.98px) {
+  .sidebar-container { --sidebar-width: 74vw; }
+  #chat-ui { margin-right: 0 !important; }
+  .landing-top-content { max-width: 100%; }
+  .landing-middle-area .d-flex.justify-content-between { padding: 0 6px; }
+  .profile-actions-grid { grid-template-columns: repeat(3, 1fr); }
+  .btn-profile-action { min-height: 38px; }
+  #rooms-grid-container .col { flex: 0 0 auto; width: 33.333%; }
+  .room-select-card .card-body h6 { font-size: 14px; }
+}
+
+/* ── Laptops / desktops (>= 992px): restore the classic right-dock ── */
+@media (min-width: 992px) {
+  .profile-actions-grid { grid-template-columns: repeat(4, 1fr); }
+  .btn-profile-action { height: 32px; font-size: 13px; }
+  #chat-ui { margin-right: var(--sidebar-width); }
+  .sidebar-container { --sidebar-width: 340px; --sidebar-width: min(340px, 30vw); }
+  .toast-container { bottom: 20px; right: 20px; }
+  .landing-middle-area { max-width: 760px; margin: 0 auto; width: 100%; }
+  .site-banner-container img { max-height: 200px; object-fit: cover; }
+}
+
+/* ── Wide screens (>= 1400px) ── */
+@media (min-width: 1400px) {
+  .sidebar-container { --sidebar-width: 400px; --sidebar-width: min(400px, 28vw); }
+  #messages-container { font-size: 16px; }
+  .landing-middle-area { max-width: 860px; }
+  .profile-actions-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── Height-constrained laptops (short screens): keep tabs visible ── */
+@media (max-height: 600px) and (min-width: 768px) {
+  .landing-header { padding: 4px 8px; }
+  #userProfileModal .modal-header { height: 110px !important; min-height: 110px !important; }
+  #userProfileModal #profile-cover { height: 110px !important; }
+  .profile-actions-grid { max-height: 34vh; overflow-y: auto; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ALL-DEVICE TOUCH / LAYOUT COMPATIBILITY LAYER
+   Goal: buttons click reliably with both mouse (laptop/desktop) and
+   touch (iPhone/Android/touch-laptops), and the chat input bar keeps
+   a clean, correctly shaped layout on small screens.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Legacy iOS 11 / 12: safe-area-inset used the `constant()` keyword
+   before `env()` existed. Without this the bottom input bar rides up
+   under the home indicator on older iPhones. */
+@supports (padding: constant(safe-area-inset-bottom)) {
+  #chat-ui,
+  .chat-input-container {
+    padding-bottom: constant(safe-area-inset-bottom);
+  }
+  #chat-ui {
+    padding-left: constant(safe-area-inset-left);
+    padding-right: constant(safe-area-inset-right);
+  }
+}
+
+/* Touch devices (iPhones, tablets, touch laptops): larger, aligned,
+   correctly shaped tap targets. The default action buttons are only
+   32px — below the comfortable 40-44px touch target. */
+@media (hover: none), (pointer: coarse) {
+  button, a, input, .btn, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* input-bar action buttons: grow to a finger-friendly size and
+     keep square corners consistent across iOS/Android */
+  .btn-input-action {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0 !important;
+  }
+
+  .extra-actions-menu .btn-input-action {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .btn-send {
+    min-height: 40px;
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .chat-input-field,
+  #chat-input {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .chat-input-container {
+    padding-top: 6px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+  }
+
+  /* pressed feedback because :hover never fires on touch */
+  .btn-input-action:active, .btn-send:active { opacity: 0.7; }
+}
+
+/* Emoji picker / extra-actions must never overflow a very narrow phone */
+@media (max-width: 380px) {
+  .extra-actions-menu {
+    left: auto !important;
+    right: 0;
+    max-width: calc(100vw - 16px);
+    flex-wrap: wrap;
+  }
+  .extra-actions-menu .btn-input-action { width: 40px !important; height: 40px !important; }
+}

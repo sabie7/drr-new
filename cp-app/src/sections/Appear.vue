@@ -117,7 +117,7 @@ function save() {
         </UField>
       </div>
       <UField label="نص الفوتر (أسفل الصفحة الرئيسية — فارغ = النص الافتراضي)" class="mt-4 block">
-        <input v-model="f.footerText" placeholder="شات درر © 2026 — دردشة خليجية وعربية مجانية" class="u-input">
+        <input v-model="f.footerText" placeholder="Kaz Alwadi © 2026 — دردشة خليجية وعربية مجانية" class="u-input">
       </UField>
     </UCard>
 

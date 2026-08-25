@@ -1,4 +1,3 @@
-/* Kaz alwadi (c) 2026 — Utilities */
 const crypto = require('crypto');
 
 module.exports = {

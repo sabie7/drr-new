@@ -1,39 +1,53 @@
 {
-  "name": "kaz-chat",
-  "version": "2.0.0",
-  "description": "Kaz Chat — split-architecture real-time chat platform",
-  "author": "Kaz alwadi <sabie7@users.noreply.github.com>",
-  "license": "MIT",
-  "copyright": "© 2026 Kaz alwadi. All rights reserved.",
-  "main": "dist-server/server.js",
-  "private": true,
-  "engines": {
-    "node": ">=20"
-  },
+  "name": "kaz-alwadi-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "node dist-server/server.smt7hcogc.js",
-    "build": "npm run build:server && npm run build:chat",
-    "build:server": "node build-server.cjs",
-    "build:chat": "node build-chat.cjs",
-    "build:panel": "cd cp-app && npm install && npm run build",
-    "verify": "node scripts/verify.cjs"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run test/unit",
+    "test:integration": "vitest run test/integration",
+    "start": "node dist-server/server.smt4vfj1u.js",
+    "start:modern": "node src/modern-server.js",
+    "start:new": "node src/app.js",
+    "start:old": "node src/index.js",
+    "build": "vite build",
+    "lint": "eslint src client/js test",
+    "lint:fix": "eslint src client/js test --fix",
+    "format": "prettier --write \"src/**/*.js\" \"client/js/**/*.js\" \"test/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"client/js/**/*.js\" \"test/**/*.js\"",
+    "build:server": "node build-server.cjs"
   },
+  "keywords": [],
+  "author": "Kaz Alwadi",
+  "license": "MIT",
+  "type": "commonjs",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@socket.io/redis-adapter": "^8.3.0",
     "bcryptjs": "^3.0.3",
-    "compression": "^1.8.1",
+    "bootstrap": "^5.3.3",
     "cors": "^2.8.6",
-    "express": "^4.21.2",
+    "express": "4.19.2",
     "express-rate-limit": "^8.6.0",
     "ffmpeg-static": "^5.3.0",
     "helmet": "^8.3.0",
     "mongoose": "^8.3.1",
-    "multer": "^2.0.1",
+    "multer": "1.4.5-lts.1",
     "redis": "^6.2.0",
     "sharp": "^0.35.3",
-    "socket.io": "^4.8.3"
+    "socket.io": "4.7.5",
+    "socket.io-client": "4.7.5"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "mongodb-memory-server": "^11.2.0",
+    "prettier": "^3.9.6",
+    "socket.io-client": "^4.7.5",
+    "vite": "^8.2.0",
+    "vitest": "^4.1.10"
   }
 }

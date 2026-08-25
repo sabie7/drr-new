@@ -1,14 +1,11 @@
-﻿     1	/* ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ
-     2	   INDEX ظ¤ consolidated stylesheet entry point.
-     3	   Order matters: tokens ظْ theme (dark mode) ظْ layout ظْ components
-     4	   ظْ legacy compatibility layer. njm.css and modern.css are legacy
-     5	   files not referenced by index.html/cp.html and are intentionally
-     6	   excluded (dead code).
-     7	   ظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـظـ */
-     8	
-     9	@import url('./tokens.css?v=4');
-    10	@import url('./theme.css?v=4');
-    11	@import url('./layout.css?v=4');
-    12	@import url('./components.css?v=4');
-    13	@import url('./legacy-features.css?v=4');
-    14	
+/* ══════════════════════════════════════════════════════════════
+   INDEX — consolidated stylesheet entry point.
+   Order matters: tokens → theme (dark mode) → layout → components
+   → legacy compatibility layer.
+   ══════════════════════════════════════════════════════════════ */
+
+@import url('./tokens.css?v=4');
+@import url('./theme.css?v=4');
+@import url('./layout.css?v=4');
+@import url('./components.css?v=4');
+@import url('./legacy-features.css?v=4');

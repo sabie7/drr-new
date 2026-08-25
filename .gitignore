@@ -1,18 +1,9 @@
-# dependencies
 node_modules/
-
-# build outputs (regenerated via npm run build)
 dist-server/
-cp-app/dist/
+cp-dist/
 client/dist/
-
-# environment & secrets
 .env
 *.log
-
-# OS / editor
+.server-assembled.tmp
 .DS_Store
 Thumbs.db
-
-dist-server/
-.server-assembled.tmp
