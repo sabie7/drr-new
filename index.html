@@ -440,19 +440,19 @@
       <div style="width:100%;height: 74px;" class="tab-content fl" >
         <div id="l1" style="padding:4px;width:100%;" class="tab-pane in active">
           <input style="width: 206px;margin-top:33px;padding:5px;border-radius: 2px;height:33px;" autocomplete="off" type="search" class="border corner" id="u1" placeholder="أكتب الاسم المستعار">
-          <button style="margin-top:1px;" onclick="login(1);" aria-label="enter" class="btn btn-primary">دخول</button>
+          <button style="margin-top:1px;" onclick="kazLogin(1);" aria-label="enter" class="btn btn-primary">دخول</button>
         </div>
         <div id="l2" style="padding:4px;width:100%;" class="tab-pane hid">
           <input style="width: 206px;padding:5px;border-radius: 2px;height:33px;" id="u2" class="border corner" placeholder="اكتب اسم العضو">
           <input style="width: 206px;padding:5px;border-radius: 2px;height:33px;" id="pass1" class="border corner" type="password" placeholder="اكتب كلمه المرور">
-          <button onclick="login(2);" class="btn btn-primary">دخول</button>
+          <button onclick="kazLogin(2);" class="btn btn-primary">دخول</button>
           <span onclick="$(this).toggleClass('label-info');$('#stealth').prop('checked',$(this).hasClass('label-info'));" style="color: black;padding:4px;margin:2px;border-radius:4px;" class="btn fr fa fa-eye"></span>
           <input style="display: none;" id="stealth" type="checkbox" value="">   
         </div>
         <div id="l3" style="padding:4px;width:100%;" class="tab-pane hid">
           <input style="width: 206px;padding:5px;border-radius: 2px;height:33px;" id="u3" class="border corner" placeholder="اكتب اسم العضو">
           <input style="width: 206px;padding:5px;border-radius: 2px;height:33px;" id="pass2" class="border corner" type="password" placeholder="اكتب كلمه المرور">
-          <button onclick="login(3);" class="btn btn-primary">دخول</button>
+          <button onclick="kazLogin(3);" class="btn btn-primary">دخول</button>
         </div>
         <h6 class="hid">
           دردشه كاز هوست | دردشة كاز
@@ -1027,184 +1027,97 @@
       دردشة كاز للجوال,دردشة,شات كاز,دردشة كاز هوست,دردشة الجوال,شات كاز للجوال,استضافه كاز هوست الكتابي,شات هوست،شات فون هوست,Kaz Alwadi,فتح شات,هوست شات,استضافة جوال,استضافة فون هوست للجوال,استضافة دردشة فون هوست,شات الرياض الصوتي للجوال,Kaz Alwadi,فتح شات,شات جوال الخليج,شات موبايل هوست.دردشة موبايل هوست .شات جوال جوال للجوال , دردشة شات كاز الكتابية الصوتية للجوال,شات جوال للجوال,دردشة الرياض للجوال الكتابي,شات جوال الرياض الصوتي,دردشة الرياض الصوتي للجوال,شات الرياض الصوتي,دردشة الرياض الصوتية,شات الرياض,دردشة الرياض,شات الرياض.للجوال,شات.دردشة.الرياض.الصوتي,شات دردشة الرياض الكتابي الصوتي للجوال,شات عشق,دردشة,عشق,شات عشق الخليج,شات الرياض,دردشة كتابي,شات كاز,شات الرياض, شات طيفك للجوال,تايجر هوست,دردشة طيفك,شات طيفك الصوتي
     </h6> 
     
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30c03527e2ecb15',t:'MTc4NzY3NTc1OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>
-// Kaz Alwadi — patch login AFTER x3.js defines it
-(function waitAndPatch() {
-  if (typeof window.login === 'function' && window.login.toString().indexOf('_0x') !== -1) {
-    // x3.js login detected — override it
-    var origLogin = window.login;
-    window.login = function(type) {
-      type = Number(type) || 1;
-      var nick = '', user = '', pass = '';
-      if (type === 1) { nick = (document.getElementById('u1')||{}).value || ''; }
-      if (type === 2) { user = (document.getElementById('u2')||{}).value || ''; pass = (document.getElementById('pass1')||{}).value || ''; }
-      if (type === 3) { user = (document.getElementById('u3')||{}).value || ''; pass = (document.getElementById('pass2')||{}).value || ''; }
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30c03527e2ecb15',t:'MTc4NzY3NTc1OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 
-      if (type === 1) {
-        fetch('/api/auth/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nickname: nick.trim() }) })
-        .then(function(r){ return r.json(); }).then(function(d){
-          if (d && d.success && d.token) {
-            try { sessionStorage.setItem('chat_token', d.token); sessionStorage.setItem('chat_user', JSON.stringify(d.user||{})); } catch(e){}
-            if (typeof socket !== 'undefined' && socket) { socket.emit('msg', { cmd: 'mnnile', data: { username: nick.trim(), token: d.token } }); }
-            var lp = document.getElementById('tlogins'); if (lp) lp.style.display = 'none';
-          } else { alert((d && d.message) || 'خطأ في الدخول'); }
-        }).catch(function(){ alert('خطأ في الاتصال'); });
-        return;
-      }
-      var endpoint = type === 3 ? '/api/auth/register' : '/api/auth/login';
-      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: user.trim(), password: pass }) })
-      .then(function(r){ return r.json(); }).then(function(d){
-        if (d && d.success) {
-          if (type === 3) { alert('تم إنشاء الحساب!'); return; }
-          try { sessionStorage.setItem('chat_token', d.token); sessionStorage.setItem('chat_user', JSON.stringify(d.user||{})); } catch(e){}
-          if (typeof socket !== 'undefined' && socket) { socket.emit('msg', { cmd: 'login', data: { username: user.trim(), token: d.token } }); }
-          var lp = document.getElementById('tlogins'); if (lp) lp.style.display = 'none';
-        } else { alert((d && d.message) || 'خطأ في الدخول'); }
-      }).catch(function(){ alert('خطأ في الاتصال'); });
-    };
-    console.log('[Kaz] login() patched');
-  } else {
-    setTimeout(waitAndPatch, 200);
-  }
-})();
-</script>
 
-<!-- Kaz Alwadi Chat — working chat UI -->
-<div id="kaz-chat-root" style="display:none; width:100%; height:100vh; position:fixed; top:0; left:0; z-index:9999; background:#1a1a2e;">
-  <div style="display:flex; flex-direction:column; height:100%; max-width:500px; margin:0 auto; background:#16213e;">
-    <!-- Header -->
-    <div style="background:#4f46e5; color:#fff; padding:10px 15px; display:flex; justify-content:space-between; align-items:center;">
-      <span style="font-weight:bold; font-family:Tajawal,sans-serif;">دردشة كاز | Kaz Alwadi</span>
-      <span id="kaz-online" style="background:rgba(255,255,255,0.2); padding:2px 10px; border-radius:12px; font-size:12px;">0 متصل</span>
-    </div>
-    <!-- Messages -->
-    <div id="kaz-messages" style="flex:1; overflow-y:auto; padding:10px; font-family:Tajawal,sans-serif;"></div>
-    <!-- Input -->
-    <div style="padding:10px; background:#0f3460; display:flex; gap:8px;">
-      <input id="kaz-input" type="text" placeholder="اكتب رسالتك هنا..." autocomplete="off"
-        style="flex:1; padding:10px; border:none; border-radius:8px; font-family:Tajawal,sans-serif; font-size:14px; outline:none;">
-      <button id="kaz-send" style="background:#4f46e5; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-family:Tajawal,sans-serif; font-weight:bold;">إرسال</button>
-    </div>
-  </div>
-</div>
 <script>
-// Kaz chat — standalone working chat
+/* Kaz Alwadi entry + chat (c) 2026 */
 (function(){
-  var token = null, user = null, socket = null;
-  var msgsEl = null;
+  var socket = null;
+  function $(id){ return document.getElementById(id); }
 
-  function init() {
-    msgsEl = document.getElementById('kaz-messages');
-    var sendBtn = document.getElementById('kaz-send');
-    var inputEl = document.getElementById('kaz-input');
-    if (sendBtn) sendBtn.addEventListener('click', send);
-    if (inputEl) inputEl.addEventListener('keydown', function(e){ if(e.key==='Enter'){e.preventDefault();send();} });
+  var chat = document.createElement('div');
+  chat.id = 'kaz-chat-root';
+  chat.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#16213e;font-family:Tajawal,Arial,sans-serif;direction:rtl;';
+  chat.innerHTML =
+    '<div style="display:flex;flex-direction:column;height:100%;max-width:520px;margin:0 auto;background:#16213e;">' +
+    '<div style="background:#4f46e5;color:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">' +
+    '<span style="font-weight:bold;">دردشة كاز | Kaz Alwadi</span>' +
+    '<span id="kaz-online" style="background:rgba(255,255,255,.2);padding:2px 10px;border-radius:12px;font-size:12px;">0 متصل</span></div>' +
+    '<div id="kaz-messages" style="flex:1;overflow-y:auto;padding:10px;"></div>' +
+    '<div style="padding:10px;background:#0f3460;display:flex;gap:8px;">' +
+    '<input id="kaz-input" type="text" placeholder="اكتب رسالتك..." autocomplete="off" style="flex:1;padding:11px;border:none;border-radius:8px;font-size:14px;color:#111;">' +
+    '<button id="kaz-send" style="background:#4f46e5;color:#fff;border:none;padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:bold;">إرسال</button></div></div>';
+  document.body.appendChild(chat);
+
+  function addMsg(name, text, self) {
+    var box = $('kaz-messages'); if(!box) return;
+    var d = document.createElement('div');
+    d.style.cssText = 'background:'+(self?'#4f46e5':'#0f3460')+';color:#fff;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:14px;max-width:85%;'+(self?'margin-left:auto;':'');
+    var b = document.createElement('b'); b.style.cssText='color:#fbbf24;font-size:11px;display:block;'; b.textContent=name;
+    var s = document.createElement('span'); s.textContent=text;
+    d.appendChild(b); d.appendChild(s); box.appendChild(d);
+    box.scrollTop = box.scrollHeight;
   }
 
-  function send() {
-    var inputEl = document.getElementById('kaz-input');
-    var text = (inputEl||{}).value || '';
-    if (!text.trim() || !socket || !socket.connected) return;
-    socket.emit('msg', { cmd: 'msg_add', data: { msg: text.trim(), room: 1 } });
-    inputEl.value = '';
+  function connect(token) {
+    socket = io({ auth: { token: token, clientSessionId: 'kaz-' + Date.now() } });
+    window.__kazSocket = socket;
+    socket.on('users-snapshot', function(d){
+      var n = (d && d.users && d.users.length) || 0;
+      var el = $('kaz-online'); if(el) el.textContent = n + ' متصل';
+    });
+    socket.on('connect', function(){ addMsg('النظام','تم الاتصال ✓',false); });
+    socket.on('disconnect', function(){ addMsg('النظام','انقطع الاتصال',false); });
   }
 
-  function addMsg(data) {
-    if (!msgsEl) return;
-    var div = document.createElement('div');
-    div.style.cssText = 'background:#0f3460;color:#fff;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:14px;max-width:85%;' + (data.isSelf ? 'margin-left:auto;background:#4f46e5;' : '');
-    var nameEl = document.createElement('b');
-    nameEl.style.cssText = 'color:#fbbf24;font-size:12px;display:block;';
-    nameEl.textContent = data.name || 'زائر';
-    var textEl = document.createElement('span');
-    textEl.textContent = data.text || '';
-    div.appendChild(nameEl);
-    div.appendChild(textEl);
-    msgsEl.appendChild(div);
-    msgsEl.scrollTop = msgsEl.scrollHeight;
+  function enterChat(token, name) {
+    try { sessionStorage.setItem('chat_token', token); sessionStorage.setItem('chat_user', JSON.stringify({username:name})); } catch(e){}
+    var lp = $('tlogins'); if (lp) lp.style.display = 'none';
+    chat.style.display = 'block';
+    addMsg('النظام', 'أهلاً ' + name + '!', true);
+    connect(token);
   }
 
-  window.showChat = function() {
-    var root = document.getElementById('kaz-chat-root');
-    if (root) root.style.display = 'block';
-    var tlogins = document.getElementById('tlogins');
-    if (tlogins) tlogins.style.display = 'none';
-    init();
-    connectSocket();
+  function say(m){ alert(m); }
+
+  window.kazLogin = function(type) {
+    type = Number(type) || 1;
+    if (type === 1) {
+      var nick = (($('u1')||{}).value || '').trim();
+      if (!nick) nick = 'zair_' + Math.floor(1000 + Math.random()*9000);
+      fetch('/api/auth/guest', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ nickname: nick }) })
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if (d && d.success && d.token) enterChat(d.token, (d.user&&d.user.username)||nick);
+          else say((d&&d.message)||'تعذر الدخول');
+        })
+        .catch(function(){ say('خطأ في الاتصال بالسيرفر'); });
+      return;
+    }
+    var user = (($('u2')||{}).value || '').trim();
+    var pass = ($(type === 3 ? 'pass2' : 'pass1')||{}).value || '';
+    if (!user || !pass) { say('اكتب الاسم وكلمة المرور'); return; }
+    var ep = type === 3 ? '/api/auth/register' : '/api/auth/login';
+    fetch(ep, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username: user, password: pass }) })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.success && d.token) enterChat(d.token, (d.user&&d.user.username)||user);
+        else say((d&&d.message)||(type===3?'تعذر التسجيل':'تعذر الدخول'));
+      })
+      .catch(function(){ say('خطأ في الاتصال بالسيرفر'); });
   };
 
-  function connectSocket() {
-    if (typeof io === 'undefined') { setTimeout(connectSocket, 500); return; }
-    token = sessionStorage.getItem('chat_token');
-    user = JSON.parse(sessionStorage.getItem('chat_user') || '{}');
-    window.__kazSocket = socket = io({ autoConnect: true, auth: { token: token, clientSessionId: 'kaz-' + Date.now() } });
-    socket.on('connect', function() {
-      console.log('[Kaz] connected with auth');
-    });
-    socket.on('message', function(d) {
-      if (!d || !d.cmd) return;
-      if (d.cmd === 'login_ok') {
-        user = Object.assign(user || {}, d.data || {});
-        addMsg({ name: 'النظام', text: 'مرحباً ' + (user.username||'') + '!' });
-      }
-      if (d.cmd === 'msg' && d.data) {
-        addMsg({ name: d.data.topic || d.data.username, text: d.data.msg, isSelf: (d.data.uid===(user||{}).id) });
-      }
-    });
-    socket.on('users-snapshot', function(d) {
-      var count = (d && d.users && d.users.length) || 0;
-      var el = document.getElementById('kaz-online');
-      if (el) el.textContent = count + ' متصل';
-    });
+  function send() {
+    var inp = $('kaz-input'), t = (inp.value||'').trim();
+    if (!t) return;
+    if (!socket || !socket.connected) { addMsg('النظام','غير متصل بعد...',false); return; }
+    socket.emit('wallpost', { text: t });
+    addMsg('أنا', t, true);
+    inp.value = '';
   }
-
-  // Patch login to show our chat
-  (function waitAndPatch() {
-    if (typeof window.login === 'function' && window.login.toString().indexOf('_0x') !== -1) {
-      var origLogin = window.login;
-      window.login = function(type) {
-        type = Number(type) || 1;
-        var nick = '', user_ = '', pass = '';
-        if (type === 1) { nick = (document.getElementById('u1')||{}).value || ''; }
-        if (type === 2) { user_ = (document.getElementById('u2')||{}).value || ''; pass = (document.getElementById('pass1')||{}).value || ''; }
-        if (type === 3) { user_ = (document.getElementById('u3')||{}).value || ''; pass = (document.getElementById('pass2')||{}).value || ''; }
-
-        if (type === 1) {
-          fetch('/api/auth/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nickname: nick.trim() }) })
-          .then(function(r){ return r.json(); }).then(function(d){
-            if (d && d.success && d.token) {
-              sessionStorage.setItem('chat_token', d.token);
-              sessionStorage.setItem('chat_user', JSON.stringify(d.user||{}));
-              showChat();
-            } else {
-              // Reserved name or other error — still enter as guest
-              var fallbackName = nick.trim() || ('زائر_' + Math.floor(Math.random()*9999));
-              sessionStorage.setItem('chat_token', 'local-' + Date.now());
-              sessionStorage.setItem('chat_user', JSON.stringify({ username: fallbackName }));
-              showChat();
-            }
-          }).catch(function(){
-              var fallbackName = nick.trim() || ('زائر_' + Math.floor(Math.random()*9999));
-              sessionStorage.setItem('chat_token', 'local-' + Date.now());
-              sessionStorage.setItem('chat_user', JSON.stringify({ username: fallbackName }));
-              showChat();
-          });
-          return;
-        }
-        var endpoint = type === 3 ? '/api/auth/register' : '/api/auth/login';
-        fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: user_.trim(), password: pass }) })
-        .then(function(r){ return r.json(); }).then(function(d){
-          if (d && d.success) {
-            if (type === 3) { alert('تم إنشاء الحساب!'); return; }
-            sessionStorage.setItem('chat_token', d.token);
-            sessionStorage.setItem('chat_user', JSON.stringify(d.user||{}));
-            showChat();
-          } else { alert((d && d.message) || 'خطأ'); }
-        }).catch(function(){ alert('خطأ في الاتصال'); });
-      };
-      console.log('[Kaz] login() patched → standalone chat');
-    } else { setTimeout(waitAndPatch, 200); }
-  })();
+  $('kaz-send').addEventListener('click', send);
+  $('kaz-input').addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); send(); } });
 })();
 </script>
 </body> 
