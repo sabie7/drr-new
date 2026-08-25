@@ -1,5 +1,5 @@
 {
-  "name": "kaz-alwadi-chat",
+  "name": "hi-master",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -20,8 +20,8 @@
     "build:server": "node build-server.cjs"
   },
   "keywords": [],
-  "author": "Kaz Alwadi",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",

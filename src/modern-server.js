@@ -3867,6 +3867,27 @@ io.on('connection', (socket) => {
 
   socket.on('msg', (data) => {
     if (!data || !data.cmd) return;
+    // ── Legacy jawall protocol bridge ──
+    if (data.cmd === 'mnnile') {
+      const rawNick = String((data.data || {}).username || (data.data || {}).nick || '');
+      const nick = rawNick.trim().length >= 3 ? sanitizeUsername(rawNick, 24) : ('زائر_' + Math.floor(1000 + Math.random() * 9000));
+      const guestId = 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      const guest = {
+        guestId, uid: '', username: nick, topic: nick, type: 'guest', guest: true,
+        pic: 'pic.png', ucol: '#000000', mcol: '#6c757d', bg: '#ffffff',
+        msg: '', co: 'us', country: 'us', rep: 0, likes: 0, coins: 0, wallPoints: 0,
+        token: makeToken(), fp: '', fp2: '', ip: socket.handshake?.address || '',
+        stealth: false, isHidden: false, isIdle: false, rank: '',
+        group: { id: 0, name: '', roleRank: 0 },
+        isAdmin: false, verified: false, allowPrivate: true, joinTime: Date.now(),
+      };
+      guestRegistry.set(guestId, guest);
+      socket.guest = guest;
+      socket.emit('message', { cmd: 'login_ok', data: guest });
+      socket.emit('message', { cmd: 'getstate', data: { user: guest, roomId: 1 } });
+      logger.info('legacy.guest', 'Guest via jawall bridge', { nick });
+      return;
+    }
     if (data.cmd === 'delBand' && data.data && (data.data.id || data.data.fp || data.data.ip)) {
       // Require an already-authenticated CP admin; otherwise verify the CP
       // password inline so the ban list can never be tampered with by anon.

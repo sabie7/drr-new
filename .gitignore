@@ -1,9 +1,6 @@
-node_modules/
+﻿node_modules/
 dist-server/
 cp-dist/
-client/dist/
 .env
 *.log
-.server-assembled.tmp
 .DS_Store
-Thumbs.db
