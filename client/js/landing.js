@@ -42,6 +42,16 @@
       var s = document.createElement('script');
       s.src = '/js/main.js?v=' + Date.now();
       s.setAttribute('data-main-script', 'true');
+      s.onload = function () {
+        // Ensure socket connects (bundle uses autoConnect:false)
+        setTimeout(function () {
+          try {
+            if (typeof socket !== 'undefined' && socket && !socket.connected) {
+              socket.connect();
+            }
+          } catch (e) { console.warn('[landing] socket connect:', e.message); }
+        }, 1500);
+      };
       s.onerror = function () { showAlert('خطأ في تحميل الدردشة', 'danger'); };
       document.head.appendChild(s);
     }
