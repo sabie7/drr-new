@@ -1137,11 +1137,9 @@
     if (typeof io === 'undefined') { setTimeout(connectSocket, 500); return; }
     token = sessionStorage.getItem('chat_token');
     user = JSON.parse(sessionStorage.getItem('chat_user') || '{}');
-    socket = io({ autoConnect: true });
+    window.__kazSocket = socket = io({ autoConnect: true, auth: { token: token, clientSessionId: 'kaz-' + Date.now() } });
     socket.on('connect', function() {
-      console.log('[Kaz] connected');
-      // Authenticate
-      socket.emit('msg', { cmd: 'mnnile', data: { username: user.username || '', token: token } });
+      console.log('[Kaz] connected with auth');
     });
     socket.on('message', function(d) {
       if (!d || !d.cmd) return;
