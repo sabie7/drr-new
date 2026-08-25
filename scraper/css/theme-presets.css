@@ -1,0 +1,592 @@
+/* ==========================================================================
+   MULTI-THEME PRESET SYSTEM
+   6 Complete Signature Themes with Distinct Visuals, Input Boxes & Button Shapes
+   ========================================================================== */
+
+/* ==========================================================================
+   THEME 0: BANOTA CUTE LUXURY (الستايل العراقي الفاخر - شات بنوتة كيوت)
+   - Matches the exact user screenshot
+   - Oval Pill Input Boxes (28px) with centered text (مثل الصورة)
+   - Charcoal & Dark Bronze gradient pill buttons
+   - Clean white rounded card container
+   ========================================================================== */
+html[data-theme="banota-cute"],
+body[data-theme="banota-cute"] {
+  --theme-btn-radius: 26px;
+  --theme-input-radius: 26px;
+  --theme-card-radius: 18px;
+}
+
+[data-theme="banota-cute"] #login-overlay {
+  background: #f4f4f5 !important;
+}
+
+/* Header & Top Bars */
+[data-theme="banota-cute"] .landing-header,
+[data-theme="banota-cute"] .classic-header,
+[data-theme="banota-cute"] .sidebar-header,
+[data-theme="banota-cute"] .voice-top-bar,
+[data-theme="banota-cute"] .bottom-tabs-bar {
+  background: linear-gradient(182deg, #5e5645 0%, #332d29 100%) !important;
+  border-bottom: 1px solid #585048 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Quick Action Links Bar (الاشتراكات / القوانين / من نحن) */
+[data-theme="banota-cute"] .landing-top-content .btn-dark,
+[data-theme="banota-cute"] .landing-top-content .btn-purple,
+[data-theme="banota-cute"] .landing-header .btn-success {
+  border-radius: 22px !important;
+  background: linear-gradient(180deg, #585048 0%, #443c36 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  padding: 6px 12px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+[data-theme="banota-cute"] .landing-top-content .btn-dark:hover,
+[data-theme="banota-cute"] .landing-top-content .btn-purple:hover {
+  background: linear-gradient(180deg, #685f56 0%, #4e453e 100%) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+/* Login Tabs Container (تسجيل عضوية / دخول الأعضاء / دخول الزوار) */
+[data-theme="banota-cute"] .login-tabs-bar {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  margin: 0 0 0.4rem 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  /* border: 1px solid #ddd !important; */
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-theme="banota-cute"] .login-tab-link {
+  color: #4b5563 !important;
+  border-radius: 0 !important;
+  padding: 10px 6px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  background: transparent !important;
+  border-bottom: 3px solid transparent !important;
+}
+
+[data-theme="banota-cute"] .login-tab-link.active,
+[data-theme="banota-cute"] .login-tab-link#show-member-login.active {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #5e5645 !important;
+  border-radius: 0px 0px 20px 20px !important;
+  border: none !important;
+  border-bottom: 3px solid currentColor !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="banota-cute"] .login-tab-link.active i {
+  color: currentColor !important;
+}
+
+/* Login Form Card */
+[data-theme="banota-cute"] .login-form-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 18px !important;
+  padding: 16px 14px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Pill Input Boxes (مربعات الدخول البيضاوية مثل الصورة) */
+[data-theme="banota-cute"] .login-input,
+[data-theme="banota-cute"] input#member-username,
+[data-theme="banota-cute"] input#member-password,
+[data-theme="banota-cute"] input#guest-nickname,
+[data-theme="banota-cute"] input#register-username,
+[data-theme="banota-cute"] input#register-password {
+  border-radius: 26px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  height: 25px !important;
+  color: #1f2937 !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.2s ease-in-out !important;
+  padding: 0 16px !important;
+}
+
+[data-theme="banota-cute"] .login-input:focus,
+[data-theme="banota-cute"] input#member-username:focus,
+[data-theme="banota-cute"] input#member-password:focus,
+[data-theme="banota-cute"] input#guest-nickname:focus,
+[data-theme="banota-cute"] input#register-username:focus,
+[data-theme="banota-cute"] input#register-password:focus {
+  border-color: #4f4740 !important;
+  box-shadow: 0 0 0 3px rgba(79, 71, 64, 0.18) !important;
+  outline: none !important;
+}
+
+[data-theme="banota-cute"] .login-input::placeholder,
+[data-theme="banota-cute"] input#member-username::placeholder,
+[data-theme="banota-cute"] input#member-password::placeholder,
+[data-theme="banota-cute"] input#guest-nickname::placeholder,
+[data-theme="banota-cute"] input#register-username::placeholder,
+[data-theme="banota-cute"] input#register-password::placeholder {
+  text-align: center !important;
+  color: #9ca3af !important;
+  font-weight: 600 !important;
+}
+
+/* Hide addon text boxes in pill inputs if preferred, or blend seamlessly */
+[data-theme="banota-cute"] .input-addon-icon {
+  display: none !important;
+}
+
+[data-theme="banota-cute"] .login-action-btn {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  /* border-radius: 50% !important; */
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 0 0 / 0%) !important;
+  border: 1px solid #e5e7eb !important;
+  color: #4b5563;
+}
+
+[data-theme="banota-cute"] #hidden-mode-login-btn {
+  left: 44px;
+}
+
+/* Login Submit Buttons (أزرار الدخول الفحمية البرونزية مثل الصورة) */
+[data-theme="banota-cute"] #member-login-btn,
+[data-theme="banota-cute"] #guest-login-btn,
+[data-theme="banota-cute"] #register-btn,
+[data-theme="banota-cute"] .custom-theme-btn,
+[data-theme="banota-cute"] .btn-send {
+  border-radius: 26px !important;
+  background: linear-gradient(180deg, #585048 0%, #3e3732 100%) !important;
+  border: 1px solid #6b625a !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  height: 25px !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+[data-theme="banota-cute"] #member-login-btn:hover,
+[data-theme="banota-cute"] #guest-login-btn:hover,
+[data-theme="banota-cute"] #register-btn:hover,
+[data-theme="banota-cute"] .custom-theme-btn:hover,
+[data-theme="banota-cute"] .btn-send:hover {
+  background: linear-gradient(180deg, #685f56 0%, #4a423c 100%) !important;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-1.5px);
+}
+
+[data-theme="banota-cute"] .tab-btn.active {
+  background: rgba(88, 80, 72, 0.2) !important;
+  color: #f59e0b !important;
+  border-top: 3px solid #d97706 !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="banota-cute"] .btn-mic {
+  border-radius: 20px !important;
+  border: 1.5px solid #6b625a !important;
+}
+
+/* ==========================================================================
+   THEME 1: CLASSIC MODERN CHARCOAL [data-theme="classic-dark"]
+   - Clean, minimalist aesthetic
+   - Rectangular soft-curved buttons (6px)
+   - Flat subtle borders
+   ========================================================================== */
+
+
+/* ==========================================================================
+   THEME 2: ROYAL LUXURY NAVY & GOLD [data-theme="royal-navy"]
+   - High luxury royal midnight navy with gold accents
+   - Pill-shaped circular buttons (30px)
+   - Elegant golden borders & ambient warm glow
+   ========================================================================== */
+html[data-theme="royal-navy"],
+body[data-theme="royal-navy"] {
+  --theme-btn-radius: 30px;
+  --theme-input-radius: 20px;
+  --theme-card-radius: 16px;
+}
+
+[data-theme="royal-navy"] #login-overlay {
+  background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0a0f1d 100%) !important;
+}
+
+[data-theme="royal-navy"] .landing-header,
+[data-theme="royal-navy"] .room-box,
+[data-theme="royal-navy"] .classic-header,
+[data-theme="royal-navy"] .sidebar-header,
+[data-theme="royal-navy"] .voice-top-bar,
+[data-theme="royal-navy"] .bottom-tabs-bar {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+  background: linear-gradient(180deg, #18243e 0%, #10192b 100%) !important;
+}
+
+[data-theme="royal-navy"] .custom-theme-btn,
+[data-theme="royal-navy"] .btn-send {
+  border-radius: 30px !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%) !important;
+  border: 1.5px solid #d4af37 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25) !important;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease-in-out !important;
+}
+
+[data-theme="royal-navy"] .custom-theme-btn:hover,
+[data-theme="royal-navy"] .btn-send:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #172554 100%) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
+  transform: translateY(-1.5px);
+  border-color: #fde047 !important;
+}
+
+[data-theme="royal-navy"] .landing-top-content .btn-dark,
+[data-theme="royal-navy"] .landing-top-content .btn-purple,
+[data-theme="royal-navy"] .landing-header .btn-success {
+  border-radius: 30px !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+[data-theme="royal-navy"] .landing-top-content .btn-dark:hover,
+[data-theme="royal-navy"] .landing-top-content .btn-purple:hover {
+  border-color: #fde047 !important;
+  transform: translateY(-1px);
+}
+
+[data-theme="royal-navy"] .login-input,
+[data-theme="royal-navy"] .form-control {
+  border-radius: 20px !important;
+}
+
+[data-theme="royal-navy"] .custom-theme-icon {
+  color: #d4af37 !important;
+}
+
+[data-theme="royal-navy"] .tab-btn.active {
+  background: rgba(212, 175, 55, 0.18) !important;
+  color: #fde047 !important;
+  border-top: 2px solid #d4af37 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="royal-navy"] .btn-mic {
+  border-radius: 50% !important;
+  border: 1.5px solid #d4af37 !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* ==========================================================================
+   THEME 3: CYBERPUNK NEON GLOW [data-theme="cyber-purple"]
+   - Cyberpunk purple/magenta futuristic vibe
+   - Chamfered-feel cyber angles & glowing borders (10px)
+   - Neon luminescence effects on hover
+   ========================================================================== */
+html[data-theme="cyber-purple"],
+body[data-theme="cyber-purple"] {
+  --theme-btn-radius: 10px;
+  --theme-input-radius: 10px;
+  --theme-card-radius: 12px;
+}
+
+[data-theme="cyber-purple"] #login-overlay {
+  background: linear-gradient(180deg, #1e0845 0%, #0f0326 100%) !important;
+}
+
+[data-theme="cyber-purple"] .landing-header,
+[data-theme="cyber-purple"] .room-box,
+[data-theme="cyber-purple"] .classic-header,
+[data-theme="cyber-purple"] .sidebar-header,
+[data-theme="cyber-purple"] .voice-top-bar,
+[data-theme="cyber-purple"] .bottom-tabs-bar {
+  background: linear-gradient(90deg, #3b0764 0%, #2e1065 50%, #4c1d95 100%) !important;
+  border-bottom: 1.5px solid #a855f7 !important;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2) !important;
+}
+
+[data-theme="cyber-purple"] .custom-theme-btn,
+[data-theme="cyber-purple"] .btn-send {
+  border-radius: 10px !important;
+  background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%) !important;
+  border: 1.5px solid #c084fc !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45) !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease-in-out !important;
+}
+
+[data-theme="cyber-purple"] .custom-theme-btn:hover,
+[data-theme="cyber-purple"] .btn-send:hover {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%) !important;
+  border-color: #f472b6 !important;
+  box-shadow: 0 0 22px rgba(236, 72, 153, 0.65), 0 0 8px rgba(168, 85, 247, 0.8) !important;
+  transform: translateY(-2px) scale(1.02);
+}
+
+[data-theme="cyber-purple"] .landing-top-content .btn-dark,
+[data-theme="cyber-purple"] .landing-top-content .btn-purple,
+[data-theme="cyber-purple"] .landing-header .btn-success {
+  border-radius: 10px !important;
+  border: 1px solid rgba(192, 132, 252, 0.5) !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+[data-theme="cyber-purple"] .landing-top-content .btn-dark:hover,
+[data-theme="cyber-purple"] .landing-top-content .btn-purple:hover {
+  border-color: #f472b6 !important;
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.5) !important;
+  transform: translateY(-1px);
+}
+
+[data-theme="cyber-purple"] .custom-theme-icon {
+  color: #c084fc !important;
+  filter: drop-shadow(0 0 4px rgba(192, 132, 252, 0.5));
+}
+
+[data-theme="cyber-purple"] .login-input,
+[data-theme="cyber-purple"] .form-control {
+  border-radius: 10px !important;
+}
+
+[data-theme="cyber-purple"] .form-control:focus {
+  border-color: #a855f7 !important;
+  box-shadow: 0 0 0 0.25rem rgba(168, 85, 247, 0.25), 0 0 12px rgba(168, 85, 247, 0.4) !important;
+}
+
+[data-theme="cyber-purple"] .tab-btn.active {
+  background: rgba(168, 85, 247, 0.25) !important;
+  color: #f472b6 !important;
+  border-top: 3px solid #ec4899 !important;
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.6) !important;
+}
+
+[data-theme="cyber-purple"] .btn-mic {
+  border-radius: 8px !important;
+  border: 1.5px solid #a855f7 !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5) !important;
+}
+
+/* ==========================================================================
+   THEME 4: EMERALD GLASSMORPHISM [data-theme="emerald-luxury"]
+   - Calming emerald glass luxury
+   - Soft curves with frosted glass effect (16px)
+   - Translucent shine highlights
+   ========================================================================== */
+html[data-theme="emerald-luxury"],
+body[data-theme="emerald-luxury"] {
+  --theme-btn-radius: 16px;
+  --theme-input-radius: 14px;
+  --theme-card-radius: 18px;
+}
+
+[data-theme="emerald-luxury"] #login-overlay {
+  background: radial-gradient(circle at 50% 10%, #064e3b 0%, #022c22 100%) !important;
+}
+
+[data-theme="emerald-luxury"] .landing-header,
+[data-theme="emerald-luxury"] .room-box,
+[data-theme="emerald-luxury"] .classic-header,
+[data-theme="emerald-luxury"] .sidebar-header,
+[data-theme="emerald-luxury"] .voice-top-bar,
+[data-theme="emerald-luxury"] .bottom-tabs-bar {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.95) 0%, rgba(4, 120, 87, 0.9) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(110, 231, 183, 0.3) !important;
+}
+
+[data-theme="emerald-luxury"] .custom-theme-btn,
+[data-theme="emerald-luxury"] .btn-send {
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.9) 0%, rgba(4, 120, 87, 0.95) 100%) !important;
+  border: 1px solid rgba(110, 231, 183, 0.5) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(4, 120, 87, 0.35) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+[data-theme="emerald-luxury"] .custom-theme-btn:hover,
+[data-theme="emerald-luxury"] .btn-send:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95) 0%, rgba(5, 150, 105, 1) 100%) !important;
+  border-color: #a7f3d0 !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+[data-theme="emerald-luxury"] .landing-top-content .btn-dark,
+[data-theme="emerald-luxury"] .landing-top-content .btn-purple,
+[data-theme="emerald-luxury"] .landing-header .btn-success {
+  border-radius: 14px !important;
+  border: 1px solid rgba(110, 231, 183, 0.25) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+[data-theme="emerald-luxury"] .landing-top-content .btn-dark:hover,
+[data-theme="emerald-luxury"] .landing-top-content .btn-purple:hover {
+  border-color: #6ee7b7 !important;
+  transform: translateY(-1px);
+}
+
+[data-theme="emerald-luxury"] .login-input,
+[data-theme="emerald-luxury"] .form-control,
+[data-theme="emerald-luxury"] .input-group-text {
+  border-radius: 14px;
+}
+
+[data-theme="emerald-luxury"] .custom-theme-icon {
+  color: #6ee7b7 !important;
+}
+
+[data-theme="emerald-luxury"] .tab-btn.active {
+  background: rgba(110, 231, 183, 0.2) !important;
+  color: #a7f3d0 !important;
+  border-top: 3px solid #6ee7b7 !important;
+  border-radius: 10px 10px 0 0;
+}
+
+[data-theme="emerald-luxury"] .btn-mic {
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(110, 231, 183, 0.6) !important;
+  box-shadow: 0 2px 8px rgba(4, 120, 87, 0.3) !important;
+}
+
+/* ==========================================================================
+   THEME 5: 3D TACTILE RAISED DEPTH [data-theme="raised-3d"]
+   - Tactile 3D button appearance with bottom-lip thickness
+   - Physical press motion down on active/click (12px)
+   - Deep rich ruby/crimson & bold depth
+   ========================================================================== */
+html[data-theme="raised-3d"],
+body[data-theme="raised-3d"] {
+  --theme-btn-radius: 12px;
+  --theme-input-radius: 10px;
+  --theme-card-radius: 14px;
+}
+
+[data-theme="raised-3d"] #login-overlay {
+  background: linear-gradient(180deg, #4c0519 0%, #1f0108 100%) !important;
+}
+
+[data-theme="raised-3d"] .landing-header,
+[data-theme="raised-3d"] .room-box,
+[data-theme="raised-3d"] .classic-header,
+[data-theme="raised-3d"] .sidebar-header,
+[data-theme="raised-3d"] .voice-top-bar,
+[data-theme="raised-3d"] .bottom-tabs-bar {
+  background: linear-gradient(180deg, #9f1239 0%, #881337 100%) !important;
+  border-bottom: 3px solid #4c0519 !important;
+}
+
+[data-theme="raised-3d"] .custom-theme-btn,
+[data-theme="raised-3d"] .btn-send {
+  border-radius: 12px !important;
+  background: linear-gradient(180deg, #e11d48 0%, #be123c 100%) !important;
+  border: 1px solid #fda4af !important;
+  border-bottom: 4px solid #4c0519 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.1s ease-in-out !important;
+  position: relative;
+  top: 0;
+}
+
+[data-theme="raised-3d"] .custom-theme-btn:hover,
+[data-theme="raised-3d"] .btn-send:hover {
+  background: linear-gradient(180deg, #f43f5e 0%, #e11d48 100%) !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="raised-3d"] .custom-theme-btn:active,
+[data-theme="raised-3d"] .btn-send:active {
+  top: 3px !important;
+  border-bottom-width: 1px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="raised-3d"] .landing-top-content .btn-dark,
+[data-theme="raised-3d"] .landing-top-content .btn-purple,
+[data-theme="raised-3d"] .landing-header .btn-success {
+  border-radius: 10px !important;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5) !important;
+  font-weight: 700;
+  transition: all 0.1s ease;
+  position: relative;
+  top: 0;
+}
+
+[data-theme="raised-3d"] .landing-top-content .btn-dark:active,
+[data-theme="raised-3d"] .landing-top-content .btn-purple:active,
+[data-theme="raised-3d"] .landing-header .btn-success:active {
+  top: 2px !important;
+  border-bottom-width: 1px !important;
+}
+
+[data-theme="raised-3d"] .login-input,
+[data-theme="raised-3d"] .form-control {
+  border-radius: 10px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="raised-3d"] .custom-theme-icon {
+  color: #f43f5e !important;
+}
+
+[data-theme="raised-3d"] .tab-btn.active {
+  background: #4c0519 !important;
+  color: #fda4af !important;
+  border-top: 3px solid #f43f5e !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="raised-3d"] .btn-mic {
+  border-radius: 12px !important;
+  border: 1px solid #fda4af !important;
+  border-bottom: 3px solid #4c0519 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+
